@@ -21,11 +21,11 @@ calc_time_between <- function(dataset, begining_time, end_time, new_name = "time
   ends_time <- quo_name(end_time)
 
   if (is.numeric(dataset[[beginings_time]])|is.numeric(dataset[[ends_time]])) {
-    stop("Begging and start times cannot be numeic, please convert to date or POSIXct.")
+    stop("Begining and start times cannot be numeic, please convert to date or POSIXct.")
   }
 
   if (is.character(dataset[[beginings_time]])|is.character(dataset[[ends_time]])) {
-    stop("Begging and start times cannot be character, please convert to date or POSIXct.")
+    stop("Begining and start times cannot be character, please convert to date or POSIXct.")
   }
 
   if (is.Date(dataset[[beginings_time]]) |
