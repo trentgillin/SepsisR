@@ -11,7 +11,7 @@
 
 assess_organ <- function(.data, method = "SIRS") {
   if (method == "SIRS") {
-    new_data <- find_sirs(.data, patientid)
+    new_data <- find_sirs(.data, patientid = encounter, time = service_timestamp, period = 1)
   } else if (method == "SOFA") {
     new_data <- find_sofa(.data)
   } else {
