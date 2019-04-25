@@ -55,7 +55,13 @@ find_sofa <- function(.data, patientid, time, period = 1) {
                        gcs <6 ~ 4),
   cardiovascular_flag = calc_card_sofa(.data, sbp, dbp, vasopressor, vasopressor_dose),
   creatinine_flag = case_when(between(creatinine, 1.2, 1.9) ~ 1,
-                              between(creatinine, 2.0. 3.4) ~ 2,
+                              between(creatinine, 2.0, 3.4) ~ 2,
                               between(creatinine, 3.5, 4.9) ~ 3,
                               creatinine > 5.0, ~ 4))
+  # create sofa total
+  .data <-mutate(.data,
+      sofa_total = PaO2_FiO2_flag + platelets_flag + bilirubin_flag +
+        gcs_flag + cardiovascular_flag + creatinine_flag)
+
+  return(.data)
 }

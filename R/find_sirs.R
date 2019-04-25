@@ -43,7 +43,7 @@ find_sirs <- function(.data, patientid, time, period = 1) {
 
   # indicate when desired levels are hit
   .data <- mutate(.data, hr_flag = if_else(hr > 90, 1, 0),
-                  rr_flag = if_else(rr >20, 1, 0),
+                  rr_flag = if_else(rr > 20, 1, 0),
                   temp_flag = if_else(temperature > 38 | temperature < 36, 1, 0),
                   wbc_flag = if_else(wbc < 4000 | wbc > 12000, 1, 0),
                   sirs_total = hr_flag + rr_flag + temp_flag + wbc_flag)
