@@ -14,11 +14,11 @@
 #' @export
 
 calc_time_between <- function(dataset, begining_time, end_time, new_name = "time_diff", unitx = "days") {
-  begining_time <- enquo(begining_time)
-  end_time <- enquo(end_time)
+  begining_time <- rlang::enquo(begining_time)
+  end_time <- rlang::enquo(end_time)
 
-  beginings_time <- quo_name(begining_time)
-  ends_time <- quo_name(end_time)
+  beginings_time <- rlang::quo_name(begining_time)
+  ends_time <- rlang::quo_name(end_time)
 
   if (is.numeric(dataset[[beginings_time]])|is.numeric(dataset[[ends_time]])) {
     stop("Begining and start times cannot be numeic, please convert to date or POSIXct.")
@@ -28,8 +28,12 @@ calc_time_between <- function(dataset, begining_time, end_time, new_name = "time
     stop("Begining and start times cannot be character, please convert to date or POSIXct.")
   }
 
-  if (is.Date(dataset[[beginings_time]]) |
-      is.Date(dataset[[ends_time]])) {
+  if (!unitx %in% c("days", "mins", "hours")) {
+    stop("Unitx can only beo one of days, mins, or hours")
+  }
+
+  if (lubridate::is.Date(dataset[[beginings_time]]) |
+      lubridate::is.Date(dataset[[ends_time]])) {
     dataset <-dplyr::mutate(dataset,
                             time_diff = as.numeric(lubridate::as.difftime(!!end_time - !!begining_time), units = unitx))
   } else {
