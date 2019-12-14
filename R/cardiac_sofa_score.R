@@ -1,18 +1,3 @@
-#' MAP calculation
-#'
-#' Finds the current Mean Arterial Pressure (MAP) score
-#'
-#'@param .data Your dataset
-#' @param sbp A numeric column that represents the systolic blood pressure
-#' @param dbp A numeric column that represents the dystolic blood pressure
-#' @examples
-#' result <- get_map(sbp, dbp)
-
-get_map <- function(sbp, dbp) {
-  map <- (sbp + (2 * dbp))/3
-  return(map)
-}
-
 #' SOFA Cardiac calculation function
 #'
 #' Finds the current cardiac score for the SOFA score
@@ -25,14 +10,14 @@ get_map <- function(sbp, dbp) {
 #' @examples
 #' cardiovascular_flag = calc_card_sofa(.data, sbp, dbp, vasopressor, vasopressor_dose)
 
-calc_card_sofa <- function(.data, sbp, dbp, vasopressor, vasopressor_dose) {
+calc_card_sofa <- function(.data, SBP, DBP, Vasopressor, Vasopressor_dose) {
   # get map
-  .data <- mutate(.data, MAP = get_map(sbp, dbp))
+  .data <- mutate(.data, MAP = (SBP + (2 * DBP))/3)
 
   # create cardiac flag
-  .data <- mutate(.data, cardiac_flag = case_when(MAP < 70 ~ 1,
-                                                  str_detect(str_to_lower(vasopressor), "dobutamine")|
-                                                    (str_detect(str_to_lower(vasopressor), "dopamine") & vasopressor_dose <= 5)~2,
+  .data <- mutate(.data, cardiovascular_flag = case_when(MAP < 70 ~ 1,
+                                                  str_detect(str_to_lower(Vasopressor), "dobutamine")|
+                                                    (str_detect(str_to_lower(Vasopressor), "dopamine") & Vasopressor_dose <= 5)~2,
                                                   ))
   return(.data)
 }
