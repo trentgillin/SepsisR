@@ -21,7 +21,7 @@ find_sirs <- function(.data, patientid, time, period = 1,
   time <- rlang::enquo(time)
 
   # make sure have all required vitals
-  if (sum(is.na(vitals)) > 0) {
+  if (length(vitals) != 4) {
     stop("You need Temperature, RR, HR, and WBC to calculate sirs")
   }
 
@@ -88,7 +88,7 @@ find_sofa <- function(.data, patientid, time, period = 1,
                                  "DBP" = NA,
                                  "Vasopressor" = NA,
                                  "Vasopressor_Dose" = NA)) {
-  if (sum(is.na(vitals) > 0)) {
+  if (length(vitals) != 10) {
     stop("You need PaO2, FiO2, Platelets, Bilirubin, GCS, Creatinie, SBP, DBP, Vasopressor, and Vasopressor Doses to calculate SOFA")
   }
 
@@ -180,7 +180,7 @@ find_qsofa <- function(.data, patientid, time, period = 1,
                        "SBP" = NA,
                         "GCS" = NA)) {
 
-   if (sum(is.na(vitals) > 0)) {
+   if (length(vitals) != 3) {
      stop("You need RR, SBP, and GCS to calculate qSOFA")
    }
 
