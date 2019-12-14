@@ -7,6 +7,7 @@
 #' @param dataset The dataset you are working with.
 #' @return Gives a dataset with a new variable consisting of the difference between two time periods
 #' @examples
+#' result <- find_bx_window(data, servie_time, culture_draw_time)
 #' @export
 
 

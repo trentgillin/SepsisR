@@ -8,7 +8,7 @@
 #' @param period A numeric value that indicates how long one vital is good for, default is one hour.
 #' @param vitals A character vector denoting what columns represent the vitals needed to calculate SIRS, it is important to have temperature in Celsius and WBC in mmm^3
 #' @examples
-#' dataset <- find_sirs(dataset, Encounter, `Vital Timestamp`, vitals = c("rr" = "RR", "temperature" = "Temperature", "hr" = "HR", "wbc" = "Wbc))
+#' dataset <- find_sirs(dataset, Encounter, `Vital Timestamp`, vitals = c("rr" = "RR", "temperature" = "Temperature", "hr" = "HR", "wbc" = "Wbc"))
 #' @export
 
 find_sirs <- function(.data, patientid, time, period = 1,
@@ -173,6 +173,7 @@ find_sofa <- function(.data, patientid, time, period = 1,
 #' @param time A POSIXct value indicating the timestamp for when vitals where taken.
 #' @param period A numeric value that indicates how long one vital is good for, default is one hour.
 #' @examples
+#' result <- find_sirs(data, patientid = Encounter, time = Servie_Time, vitals = c("RR = "rr, "SBP" = "sbp", "GCS" = "gcs"))
 #' @export
 
 find_qsofa <- function(.data, patientid, time, period = 1,
