@@ -1,6 +1,6 @@
 Package: SepsisR
 Type: Package
-Title: Simple Set Of Functions For Data Related To Sepsis
+Title: A Simple Set Of Functions For Data Related To Sepsis
 Version: 0.1.0
 Author: Trent Gillingham
 Maintainer: The package maintainer <trentgillin@gmail.com>
@@ -8,10 +8,14 @@ Description: This package is a set of functions that a data analyst working in h
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+Depends: 
+    R (>= 3.2.0)
 RoxygenNote: 7.0.2
 Imports: 
     lubridate,
     dplyr,
-    rlang
+    rlang,
+    tidyr,
+    tidyselect
 Suggests: 
-    testthat (>= 2.1.0)
+    testthat
