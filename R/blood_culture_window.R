@@ -17,19 +17,19 @@
 
 
 find_bx_window <- function(.data, timestamp_variable, blood_culture_time) {
-  if (!lubridate::is.POSIXct(.data$timestamp_variable) == TRUE) {
-    stop("timestamp_variable must be POSIXct")
-  }
 
   timestamp_variable <- rlang::enquo(timestamp_variable)
-  blood_cutlre_time <- rlang::enquo(blood_culture_time)
-
-  .data <- dplyr::mutate(.data, begining_time = !!blood_culture_time - lubridate::days(2),
-                  ending_time = !!blood_culture_time + lubridate::days(2))
-
-  .data$within_window <- dplyr::if_else(dplyr::between(timestamp_variable, begining_time, ending_time), TRUE, FALSE)
-
-  .data <- .data[[-c("begining_time", "ending_time")]]
+  blood_culture_time <- rlang::enquo(blood_culture_time)
+  
+  if (lubridate::is.POSIXct(.data[[quo_name(timestamp_variable)]]) == FALSE) {
+    stop("timestamp_variable must be POSIXct")
+  }
+  
+  .data <- calc_time_between(.data, !!blood_culture_time, !!timestamp_variable, unitx = "days")
+  .data <- mutate(.data, time_diff = abs(time_diff),
+                  within_window = if_else(time_diff <= 2, TRUE, FALSE))
+  
+  .data <- select(.data, -time_diff)
 
   return(.data)
 
