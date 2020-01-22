@@ -1,11 +1,10 @@
-###########################################################################
+
 # SepsisR: A R package to help identify sepsis patients
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 <!-- badges: end -->
-###########################################################################
 
-# Package Details----------------------------------------------------------
+# Package Details
 
 Sepsis has a complicated and varied presentation. Many professionals recognize
 sepsies presentation, but the literature is undecided when it comes to an exact
@@ -19,7 +18,7 @@ The package also has a few helper functions including find_bx_window and find_qa
 from the CDC (Centers for Disease and Control) definition of Sepsis. 
 This package is not in anyway supported by the CDC or Emory Healthcare. 
 
-# Example------------------------------------------------------------------
+# Example
 
 your_dataset <- asses_organ(your_dataset, method = "SIRS",
 				 patientid = Encounter, 

@@ -2,24 +2,20 @@ library(testthat)
 test_sirs <- SepsisR::sirs_data
 
 test_that("Calc time between works for hours", {
-  set.seed(300)
-  test_times <- dplyr::sample_n(test_sirs, 2)
-  test_times <- dplyr::select(test_times, Service_Timestamp)
-  test_times <- dplyr::mutate(test_times, time_cat = seq_along(Service_Timestamp),
+  test_times <- data.frame(times = c(lubridate::ymd_hms("2019-01-01 00:00:00"), lubridate::ymd_hms("2019-01-01 01:00:00")))
+  test_times <- dplyr::mutate(test_times, time_cat = seq_along(times),
                               time_cat = paste0("time_", time_cat))
-  test_times <- tidyr::pivot_wider(test_times, names_from = time_cat, values_from = Service_Timestamp)
-  test_times <- calc_time_between(test_times, time_2, time_1,"time_diff", unitx = "hours")
+  test_times <- tidyr::pivot_wider(test_times, names_from = time_cat, values_from = times)
+  test_times <- calc_time_between(test_times, time_1, time_2,"time_diff", unitx = "hours")
   expect_equal(test_times$time_diff, 1)
 })
 
 test_that("Calc time between works for minutes", {
-  set.seed(300)
-  test_times <- dplyr::sample_n(test_sirs, 2)
-  test_times <- dplyr::select(test_times, Service_Timestamp)
-  test_times <- dplyr::mutate(test_times, time_cat = seq_along(Service_Timestamp),
+  test_times <- data.frame(times = c(lubridate::ymd_hms("2019-01-01 00:00:00"), lubridate::ymd_hms("2019-01-01 01:00:00")))
+  test_times <- dplyr::mutate(test_times, time_cat = seq_along(times),
                               time_cat = paste0("time_", time_cat))
-  test_times <- tidyr::pivot_wider(test_times, names_from = time_cat, values_from = Service_Timestamp)
-  test_times <- calc_time_between(test_times, time_2, time_1,"time_diff", unitx = "mins")
+  test_times <- tidyr::pivot_wider(test_times, names_from = time_cat, values_from = times)
+  test_times <- calc_time_between(test_times, time_1, time_2,"time_diff", unitx = "mins")
   expect_equal(test_times$time_diff, 60)
 })
 
