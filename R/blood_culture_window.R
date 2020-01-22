@@ -21,15 +21,15 @@ find_bx_window <- function(.data, timestamp_variable, blood_culture_time) {
   timestamp_variable <- rlang::enquo(timestamp_variable)
   blood_culture_time <- rlang::enquo(blood_culture_time)
   
-  if (lubridate::is.POSIXct(.data[[quo_name(timestamp_variable)]]) == FALSE) {
+  if (lubridate::is.POSIXct(.data[[rlang::quo_name(timestamp_variable)]]) == FALSE) {
     stop("timestamp_variable must be POSIXct")
   }
   
   .data <- calc_time_between(.data, !!blood_culture_time, !!timestamp_variable, unitx = "days")
-  .data <- mutate(.data, time_diff = abs(time_diff),
-                  within_window = if_else(time_diff <= 2, TRUE, FALSE))
+  .data <- dplyr::mutate(.data, time_diff = abs(time_diff),
+                  within_window = dplyr::if_else(time_diff <= 2, TRUE, FALSE))
   
-  .data <- select(.data, -time_diff)
+  .data <- dplyr::select(.data, -time_diff)
 
   return(.data)
 

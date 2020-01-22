@@ -1,6 +1,8 @@
 ###########################################################################
 # SepsisR: A R package to help identify sepsis patients
-# This is a work in progress
+<!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+<!-- badges: end -->
 ###########################################################################
 
 # Package Details----------------------------------------------------------
@@ -15,7 +17,7 @@ Currently, all score vital thresholds are based off the MD Calc Website
 (https://www.mdcalc.com/sirs-sepsis-septic-shock-criteria). 
 The package also has a few helper functions including find_bx_window and find_qad.
 These functions are from the CDC (Centers for Disease and Control) definition
-of Sepsis. This package is not anyway supported by the CDC 
+of Sepsis. This package is not in anyway supported by the CDC or Emory Healthcare. 
 
 # Example------------------------------------------------------------------
 

@@ -16,6 +16,7 @@ Imports:
     dplyr,
     rlang,
     tidyr,
-    tidyselect
+    tidyselect,
+    stringr
 Suggests: 
     testthat

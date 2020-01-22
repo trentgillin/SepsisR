@@ -20,6 +20,7 @@
 
 calc_time_between <- function(dataset, begining_time, end_time, 
                               new_name = "time_diff", unitx = "days") {
+  
   begining_time <- rlang::enquo(begining_time)
   end_time <- rlang::enquo(end_time)
 
@@ -35,7 +36,7 @@ calc_time_between <- function(dataset, begining_time, end_time,
   }
 
   if (!unitx %in% c("days", "mins", "hours")) {
-    stop("Unitx can only beo one of days, mins, or hours")
+    stop("Unitx can only beo one of mins, hours, or days")
   }
 
   if (lubridate::is.Date(dataset[[beginings_time]]) |
