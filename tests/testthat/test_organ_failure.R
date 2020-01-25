@@ -8,3 +8,17 @@ test_that("You get an error with missing vital", {
                      vitals = c("HR" = "HR", "Temperature" = "Temperature")))
 
 })
+
+
+test_that("SIRs is correct", {
+  test_sirs <- test_sirs[1,]
+  test_sirs <- find_sirs(test_sirs,
+                         patientid = Encounter,
+                         time = Service_Timestamp,
+                         vitals = c("HR" = "HR",
+                                     "Temperature" = "Temperature",
+                                     "RR" = "RR",
+                                     "WBC" = "Wbc"))
+  expect_equal(test_sirs$sirs_total, 2)
+    
+})
