@@ -2,6 +2,7 @@
 # SepsisR: A R package to help identify sepsis patients
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![Travis build status](https://travis-ci.org/trentgillin/Sepsis.svg?branch=master)](https://travis-ci.org/trentgillin/Sepsis)
 <!-- badges: end -->
 
 # Package Details
