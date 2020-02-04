@@ -1,4 +1,7 @@
 library(testthat)
+library(dplyr)
+library(tidyr)
+
 test_sirs <- SepsisR::sirs_data
 
 test_that("You get an error with missing vital", {
