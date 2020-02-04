@@ -47,7 +47,7 @@ This is a basic example which shows you how to solve a common problem:
 ```{r example}
 library(SepsisR)
 
-your_dataset <- assess_organ(sirs_data, method = "SIRS",
+assess_organ(sirs_data, method = "SIRS",
 				 patientid = Encounter, 
 				time = Service_Timestamp, 
 				vitals = c("RR" = "RR", 
