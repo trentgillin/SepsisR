@@ -19,4 +19,5 @@ Imports:
     tidyselect,
     stringr
 Suggests: 
-    testthat
+    testthat,
+    covr
