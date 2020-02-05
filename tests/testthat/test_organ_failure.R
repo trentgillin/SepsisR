@@ -25,3 +25,11 @@ test_that("SIRs is correct", {
   expect_equal(test_sirs$sirs_total, 2)
     
 })
+
+test_that("Assess organ function gives error with missing vital", {
+  expect_error(score <- assess_organ(test_sirs,
+                                     method = "SOFA",
+                                  patientid = Encounter,
+                                  time = Service_Timestamp,
+                                  vitals = c("HR" = "HR", "Temperature" = "Temperature")))
+})
