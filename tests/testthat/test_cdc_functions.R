@@ -21,3 +21,4 @@ test_that("That blood culture window is corrent", {
   test_data_window <- find_bx_window(test_data_window, blood_culture_time = blood_culture_time, timestamp_variable = Service_Timestamp)
   expect_equal(test_data_window$within_window, TRUE)
 })
+

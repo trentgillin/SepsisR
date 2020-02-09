@@ -6,7 +6,7 @@
 #' @param patientid A value indicating the unique patient id, usually an encounter number.
 #' @param time A POSIXct value indicating the timestamp for when vitals where taken.
 #' @param period A numeric value that indicates how long one vital is good for, default is 
-#' one hour.
+#' one hour. Note: This will only fill in missing vitals.
 #' @param vitals A character vector denoting what columns represent the vitals needed 
 #' to calculate SIRS, it is important to have temperature in Celsius and WBC in mmm^3
 #' @examples
@@ -80,6 +80,7 @@ find_sirs <- function(.data, patientid, time, period = 1,
 #' @param patientid A value indicating the unique patient id, usually an encounter number.
 #' @param time A POSIXct value indicating the timestamp for when vitals where taken.
 #' @param period A numeric value that indicates how long one vital is good for, default is one hour.
+#' Note: This will only fill in missing vitals.
 #' @param vitals A character vector denoting what columns represent the vitals 
 #' needed to calculate SOFA
 #' @examples
@@ -199,7 +200,7 @@ find_sofa <- function(.data, patientid, time, period = 1,
 #' @param patientid A value indicating the unique patient id, usually an encounter number.
 #' @param time A POSIXct value indicating the timestamp for when vitals where taken.
 #' @param period A numeric value that indicates how long one vital is good for,
-#'  default is one hour.
+#'  default is one hour. Note: This will only fill in missing vitals.
 #' @param vitals A character vector denoting what columns represent the vitals 
 #' needed to calculate qSOFA
 #' @examples

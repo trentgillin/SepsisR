@@ -24,7 +24,7 @@ organ failure.}
 \item{time}{A POSIXct value that represents when a vital was taken.}
 
 \item{period}{A numeric value that indicates how long one vital is good for, default is 
-one hour.}
+one hour. Note: This will only fill in missing vitals.}
 
 \item{vitals}{A character vector denoting the certain vitals necessary for each organ 
 failure score.}

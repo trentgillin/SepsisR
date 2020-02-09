@@ -20,7 +20,7 @@ find_qsofa(
 \item{time}{A POSIXct value indicating the timestamp for when vitals where taken.}
 
 \item{period}{A numeric value that indicates how long one vital is good for,
-default is one hour.}
+default is one hour. Note: This will only fill in missing vitals.}
 
 \item{vitals}{A character vector denoting what columns represent the vitals 
 needed to calculate qSOFA}
