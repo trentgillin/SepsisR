@@ -8,9 +8,9 @@
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![Travis build
-status](https://travis-ci.org/trentgillin/Sepsis.svg?branch=master)](https://travis-ci.org/trentgillin/Sepsis)
+status](https://travis-ci.org/trentgillin/SepsisR.svg?branch=master)](https://travis-ci.org/trentgillin/SepsisR)
 [![Codecov test
-coverage](https://codecov.io/gh/trentgillin/Sepsis/branch/master/graph/badge.svg)](https://codecov.io/gh/trentgillin/Sepsis?branch=master)
+coverage](https://codecov.io/gh/trentgillin/SepsisR/branch/master/graph/badge.svg)](https://codecov.io/gh/trentgillin/SepsisR?branch=master)
 <!-- badges: end -->
 
 Sepsis has a complicated and varied presentation. Many professionals
