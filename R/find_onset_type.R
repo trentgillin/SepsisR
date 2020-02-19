@@ -29,8 +29,8 @@ find_onset <- function(.data, blood_day, first_qad, patientid, admission_day) {
   .data <- dplyr::rename(.data, "blood_hospital_day" = hospital_day)
   .data <- find_hospital_day(.data, event = !!first_qad, patientid = !!patientid, admission_day = !!admission_day)
   .data <- dplyr::rename(.data, "qad_hospital_day" = hospital_day)
-  .data <- dplyr::group_by(!!patientid)
-  .data <- tidyr::fill(tidyselect::contains("hospital_day"), .direction = "updown")
+  .data <- dplyr::group_by(.data, !!patientid)
+  .data <- tidyr::fill(.data, tidyselect::contains("hospital_day"), .direction = "updown")
   .data <- dplyr:: mutate(.data, onset_type = dplyr::if_else(blood_hospital_day >= 3 & qad_hospital_day >= 3, 0, 1),
                           onset_type = max(onset_type),
                           onset_type = dplyr::if_else(onset_type == 1, "Community", "Hospital"),
