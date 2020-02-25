@@ -6,20 +6,22 @@
 \alias{get_baseline.plate}
 \title{Function to get the baseline lab value}
 \usage{
-get_baseline(.data, labvalue, patientid, result_day, .blood = NULL)
+get_baseline(.data, labvalue, patientid, result_day, onset_type, .blood = NULL)
 
-\method{get_baseline}{bili}(.data, labvalue, patientid, result_day, .blood = NULL)
+\method{get_baseline}{bili}(.data, labvalue, patientid, result_day, onset_type, .blood = NULL)
 
-\method{get_baseline}{plate}(.data, labvalue, patientid, result_day, .blood = NULL)
+\method{get_baseline}{plate}(.data, labvalue, patientid, result_day, onset_type, .blood = NULL)
 }
 \arguments{
 \item{.data}{Your dataste}
 
-\item{labvalue}{Your lab value}
+\item{labvalue}{Your lab value, can be bilirubin, creatinine, GFR, or platelets}
 
 \item{patientid}{A column denoting a unique patient identifier}
 
 \item{result_day}{A Date column denoting when a lab resulted}
+
+\item{onset_type}{A chacter value denoting if an encounter is community or hospital onset}
 
 \item{.blood}{The blood dataset you will use to calculate window period}
 }
@@ -32,6 +34,6 @@ baseline function for GFR and Platelets
 }
 \examples{
 \dontrun{
-data <- get_baseline(creat, .blood = blood_data)
+data <- get_baseline(creat, result_day = lab_results, .blood = blood_data)
 }
 }

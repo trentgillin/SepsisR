@@ -13,7 +13,6 @@
 #' @export
 
 get_baseline <- function(.data, labvalue, patientid, result_day, onset_type, .blood = NULL) {
-  labvalue <- rlang::enquo(labvalue)
   
   class(.data) <- dplyr::case_when(stringr::str_detect(rlang::as_label(labvalue), "bili|creat")~ append(class(.data), "bili"),
                             stringr::str_detect(rlang::as_label(labvalue), "GFR|Platelet")~ append(class(.data), "plate"))
