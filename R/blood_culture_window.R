@@ -21,11 +21,11 @@ find_bx_window <- function(.data, timestamp_variable, blood_culture_time) {
   timestamp_variable <- rlang::enquo(timestamp_variable)
   blood_culture_time <- rlang::enquo(blood_culture_time)
   
-  if (!rlang::as_name(timestamp_variable) %in% colnames(.data)) {
+  if (!rlang::as_label(timestamp_variable) %in% colnames(.data)) {
     stop("Your timestamp_variable is not a column in your dataset")
   }
-  
-  if (lubridate::is.POSIXct(.data[[rlang::as_name(timestamp_variable)]]) == FALSE) {
+
+  if (lubridate::is.POSIXct(.data[[rlang::as_label(timestamp_variable)]]) == FALSE) {
     stop("timestamp_variable must be POSIXct")
   }
   

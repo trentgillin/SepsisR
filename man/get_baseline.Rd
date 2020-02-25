@@ -6,11 +6,11 @@
 \alias{get_baseline.plate}
 \title{Function to get the baseline lab value}
 \usage{
-get_baseline(.data, labvalue, patientid, result_day, onset_type, .blood = NULL)
+get_baseline(.data, labvalue, patientid, result_day, onset_type, blood)
 
-\method{get_baseline}{bili}(.data, labvalue, patientid, result_day, onset_type, .blood = NULL)
+\method{get_baseline}{bili}(.data, labvalue, patientid, result_day, onset_type, blood)
 
-\method{get_baseline}{plate}(.data, labvalue, patientid, result_day, onset_type, .blood = NULL)
+\method{get_baseline}{plate}(.data, labvalue, patientid, result_day, onset_type, blood)
 }
 \arguments{
 \item{.data}{Your dataste}
@@ -23,7 +23,7 @@ get_baseline(.data, labvalue, patientid, result_day, onset_type, .blood = NULL)
 
 \item{onset_type}{A chacter value denoting if an encounter is community or hospital onset}
 
-\item{.blood}{The blood dataset you will use to calculate window period}
+\item{blood}{A POSIXct indicating the blood culture time}
 }
 \description{
 Function to get the baseline lab value
