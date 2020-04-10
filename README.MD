@@ -17,10 +17,10 @@ Sepsis has a complicated and varied presentation. Many professionals
 recognize sepsies presentation, but the literature is undecided when it
 comes to an exact clincal definition. The purpose of the package is to
 provide functions in order to make the process of identifying and
-analyzing sepsis easier. The assess\_organ function is the main function
-of this package; it allows you to assess organ failure using one of the
-three common organ failure scores, SIRS, SOFA, and qSOFA. Currently, all
-score vital thresholds are based off the MD Calc Website
+analyzing sepsis patients easier. The assess\_organ function is the main
+function of this package; it allows you to assess organ failure using
+one of the three common organ failure scores, SIRS, SOFA, and qSOFA.
+Currently, all score vital thresholds are based off the MD Calc Website
 (<https://www.mdcalc.com/sirs-sepsis-septic-shock-criteria>). The
 package also has a few helper functions including find\_bx\_window and
 find\_qad, from the CDC (Centers for Disease and Control) definition of
@@ -29,7 +29,7 @@ Healthcare.
 
 ## Installation
 
-And the development version from [GitHub](https://github.com/) with:
+Get the development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")

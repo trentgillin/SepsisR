@@ -24,7 +24,7 @@ knitr::opts_chunk$set(
 Sepsis has a complicated and varied presentation. Many professionals recognize
 sepsies presentation, but the literature is undecided when it comes to an exact
 clincal definition. The purpose of the package is to provide functions in order 
-to make the process of identifying and analyzing sepsis easier. The assess_organ 
+to make the process of identifying and analyzing sepsis patients easier. The assess_organ 
 function is the main function of this package; it allows you to assess organ failure using
 one of the three common organ failure scores, SIRS, SOFA, and qSOFA.
 Currently, all score vital thresholds are based off the MD Calc Website 
@@ -35,9 +35,9 @@ This package is not in anyway supported by the CDC or Emory Healthcare.
 
 ## Installation
 
-And the development version from [GitHub](https://github.com/) with:
+Get the development version from [GitHub](https://github.com/) with:
 
-``` r
+```r
 # install.packages("devtools")
 devtools::install_github("trentgillin/Sepsis")
 ```

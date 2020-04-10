@@ -119,7 +119,8 @@ find_sofa <- function(.data, patientid, time, period = 1,
                                                          "Vasopressor_dose")))
 
   # calculate Pao2/FiO2
-  .data <- dplyr::mutate(.data, PaO2_FiO2 = PaO2/FiO2)
+  .data <- dplyr::mutate(.data, FiO2 = FiO2 * 100,
+                         PaO2_FiO2 = PaO2/FiO2)
 
   # group by patient
   .data <- dplyr::group_by(.data, !!patientid)
@@ -144,14 +145,14 @@ find_sofa <- function(.data, patientid, time, period = 1,
 
   # indicate when desired levels are hit
   .data <- dplyr::mutate(.data, PaO2_FiO2_flag = dplyr::case_when(
-    PaO2_FiO2 < 400 ~ 1,
-    PaO2_FiO2 < 300 ~ 2,
-    PaO2_FiO2 < 200 ~ 3,
+    between(PaO2_FiO2, 400, 300) ~ 1,
+    between(PaO2_FiO2, 299, 200) ~ 2,
+    between(PaO2_FiO2, 199, 100) ~ 3,
     PaO2_FiO2 < 100 ~ 4),
-    platelets_flag = dplyr::case_when(Platelets < 150 ~ 1,
-                               Platelets < 100 ~ 2,
-                               Platelets < 50 ~ 3,
-                               Platelets < 20 ~ 4),
+    platelets_flag = dplyr::case_when(between(Platelets, 150, 100) ~ 1,
+                                      between(Platelets, 99, 50) ~ 2,
+                                      between(Platelets, 49, 20) ~ 3,
+                                      Platelets < 20 ~ 4),
     bilirubin_flag = dplyr::case_when(between(Bilirubin, 1.2, 1.9) ~ 1,
                                between(Bilirubin, 2.0, 5.9) ~ 2,
                                between(Bilirubin, 6.0, 11.9) ~ 3,

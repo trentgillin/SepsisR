@@ -63,22 +63,34 @@ test_that("qSOFA period functionaliy is working and vitals good for more than 1 
 })
 
 test_that("Cardiac sofa score portion gives correct score with no vasopressor present", {
-  test_sofa_1 <- sofa_data[1,]
+  test_sofa_1 <- test_sofa[1,]
   test_sofa_1 <- test_sofa_1 %>%
     calc_card_sofa(SBP = SBP, DBP = DBP, Vasopressor = Vasopressor, Vasopressor_dose = `Vasopressor Dosage`)
   expect_equal(test_sofa_1$cardiovascular_flag, 0)
   })
 
 test_that("Cardiac sofa score portion gives correct score with vasopressor present", {
-  test_sofa_1 <- sofa_data[4,]
+  test_sofa_1 <- test_sofa[4,]
   test_sofa_1 <- test_sofa_1 %>%
     calc_card_sofa(SBP = SBP, DBP = DBP, Vasopressor = Vasopressor, Vasopressor_dose = `Vasopressor Dosage`)
   expect_equal(test_sofa_1$cardiovascular_flag, 1)
 })
 
 test_that("Cardiac sofa score gives warning when other vasopressors besides dopamine and dobutamine present", {
-  test_sofa_2 <- sofa_data[4,]
+  test_sofa_2 <- test_sofa[4,]
   test_sofa_2 <- test_sofa_2 %>%
     dplyr::mutate(Vasopressor = "Levophed")
   expect_warning(calc_card_sofa(.data = test_sofa_2, SBP = SBP, DBP = DBP, Vasopressor = Vasopressor, Vasopressor_dose = `Vasopressor Dosage`))
+})
+
+test_that("SOFA is correct", {
+  test_sofa_3 <- test_sofa[1,]
+  result <- find_sofa(.data = test_sofa_3,
+                      patientid = Encounter,
+                       time = Service_Timestamp,
+                       vitals = c(PaO2 = "Pa02", FiO2 = "Fi02", Platelets = "Platelet", Bilirubin = "Bili", GCS = "GCS", 
+                                  Creatinine = "Creatinie", SBP = "SBP", DBP = "DBP", Vasopressor = "Vasopressor", 
+                                  Vasopressor_Dose = "Vasopressor Dosage"))
+  expect_equal(result$sofa_total, 6)
+  
 })
