@@ -73,7 +73,7 @@ test_that("Cardiac sofa score portion gives correct score with vasopressor prese
   test_sofa_1 <- test_sofa[4,]
   test_sofa_1 <- test_sofa_1 %>%
     calc_card_sofa(SBP = SBP, DBP = DBP, Vasopressor = Vasopressor, Vasopressor_dose = `Vasopressor Dosage`)
-  expect_equal(test_sofa_1$cardiovascular_flag, 1)
+  expect_equal(test_sofa_1$cardiovascular_flag, 2)
 })
 
 test_that("Cardiac sofa score gives warning when other vasopressors besides dopamine and dobutamine present", {

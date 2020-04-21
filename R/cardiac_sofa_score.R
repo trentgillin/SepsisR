@@ -38,7 +38,7 @@ calc_card_sofa <- function(.data, SBP, DBP, Vasopressor, Vasopressor_dose) {
                                                                                        !!Vasopressor_dose <= 0.1) ~ 3,
                                             stringr::str_detect(stringr::str_to_lower(!!Vasopressor), "dobutamine")|
                                               (stringr::str_detect(stringr::str_to_lower(!!Vasopressor), "dopamine") & 
-                                                 !!Vasopressor_dose <= 5 & MAP) ~ 2,
+                                                 !!Vasopressor_dose <= 5) ~ 2,
                                             MAP < 70 ~ 1,
                                             MAP >= 70 ~ 0))
   return(.data)
