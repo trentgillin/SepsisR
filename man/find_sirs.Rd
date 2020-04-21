@@ -13,7 +13,8 @@ find_sirs(
 )
 }
 \arguments{
-\item{.data}{The dataset you are working with.}
+\item{.data}{The dataset you are working with. Must include heart rate (hr), respiratory rate (rr),
+white blood cell count (wbc), and temperature.}
 
 \item{patientid}{A value indicating the unique patient id, usually an encounter number.}
 
@@ -31,6 +32,6 @@ Finds the current organ failure score using SIRS (Systematic Inflammatory Respon
 \examples{
 \dontrun{
 dataset <- find_sirs(dataset, Encounter, `Vital Timestamp`, 
- vitals = c("rr" = "RR", "temperature" = "Temperature", "hr" = "HR", "wbc" = "Wbc"))
+ vitals = c("RR" = "rr", "Temperature" = "temperature", "HR" = "hr", "WBC" = "Wbc"))
 }
 }

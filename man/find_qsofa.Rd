@@ -13,7 +13,8 @@ find_qsofa(
 )
 }
 \arguments{
-\item{.data}{Your dataset}
+\item{.data}{Your dataset. Must have respiratory rate (rr), sytolic blood pressure (sbp). 
+and glasgow coma scale (gcs).}
 
 \item{patientid}{A value indicating the unique patient id, usually an encounter number.}
 

@@ -2,7 +2,8 @@
 #'
 #' Finds the current organ failure score using SIRS (Systematic Inflammatory Response Syndrom)
 #'
-#' @param .data The dataset you are working with.
+#' @param .data The dataset you are working with. Must include heart rate (hr), respiratory rate (rr),
+#' white blood cell count (wbc), and temperature.
 #' @param patientid A value indicating the unique patient id, usually an encounter number.
 #' @param time A POSIXct value indicating the timestamp for when vitals where taken.
 #' @param period A numeric value that indicates how long one vital is good for, default is 
@@ -12,7 +13,7 @@
 #' @examples
 #' \dontrun{
 #' dataset <- find_sirs(dataset, Encounter, `Vital Timestamp`, 
-#'  vitals = c("rr" = "RR", "temperature" = "Temperature", "hr" = "HR", "wbc" = "Wbc"))
+#'  vitals = c("RR" = "rr", "Temperature" = "temperature", "HR" = "hr", "WBC" = "Wbc"))
 #' }
 #' @export
 
@@ -76,12 +77,16 @@ find_sirs <- function(.data, patientid, time, period = 1,
 #' Finds the current organ failure score using SOFA.
 #'
 #' @param .data The dataset you are working with. Must contain 
-#' PaO2, FiO2, bilirubin, MAP, vasopressor, creatinine, gcs,  and platelet columns.
+#' PaO2, FiO2, bilirubin, vasopressor, vasopressoage dosage, creatinine, glasgow coma scale (gcs), 
+#' systolic blood pressure (sbc), diastolic blood pressure (dbc), and platelet count columns.
 #' @param patientid A value indicating the unique patient id, usually an encounter number.
 #' @param time A POSIXct value indicating the timestamp for when vitals where taken.
 #' @param period A numeric value that indicates how long one vital is good for, default is one hour.
 #' Note: This will only fill in missing vitals.
-#' @param vitals A character vector denoting what columns represent the vitals 
+#' @param vitals A character vector denoting what columns represent the vitals. It is important to 
+#' remember that right now only dopamine and dobutamin are considered in vasopressors used.Platelets should 
+#' be in 10^3/microliter and FiO2 should be listed as a percent, not a decimal.Furthermore bilirubin
+#' should be in micrograms/decilitre. 
 #' needed to calculate SOFA
 #' @examples
 #' \dontrun{
@@ -145,25 +150,25 @@ find_sofa <- function(.data, patientid, time, period = 1,
 
   # indicate when desired levels are hit
   .data <- dplyr::mutate(.data, PaO2_FiO2_flag = dplyr::case_when(
-    between(PaO2_FiO2, 400, 300) ~ 1,
-    between(PaO2_FiO2, 299, 200) ~ 2,
-    between(PaO2_FiO2, 199, 100) ~ 3,
+    dplyr::between(PaO2_FiO2, 400, 300) ~ 1,
+    dplyr::between(PaO2_FiO2, 299, 200) ~ 2,
+    dplyr::between(PaO2_FiO2, 199, 100) ~ 3,
     PaO2_FiO2 < 100 ~ 4),
-    platelets_flag = dplyr::case_when(between(Platelets, 150, 100) ~ 1,
-                                      between(Platelets, 99, 50) ~ 2,
-                                      between(Platelets, 49, 20) ~ 3,
+    platelets_flag = dplyr::case_when(dplyr::between(Platelets, 150, 100) ~ 1,
+                                      dplyr::between(Platelets, 99, 50) ~ 2,
+                                      dplyr::between(Platelets, 49, 20) ~ 3,
                                       Platelets < 20 ~ 4),
-    bilirubin_flag = dplyr::case_when(between(Bilirubin, 1.2, 1.9) ~ 1,
-                               between(Bilirubin, 2.0, 5.9) ~ 2,
-                               between(Bilirubin, 6.0, 11.9) ~ 3,
+    bilirubin_flag = dplyr::case_when(dplyr::between(Bilirubin, 1.2, 1.9) ~ 1,
+                               dplyr::between(Bilirubin, 2.0, 5.9) ~ 2,
+                               dplyr::between(Bilirubin, 6.0, 11.9) ~ 3,
                                Bilirubin > 12.0 ~ 4),
-    gcs_flag = dplyr::case_when(between(GCS, 13, 14) ~ 1,
-                         between(GCS, 10, 12) ~ 2,
-                         between(GCS, 6, 9) ~ 3,
+    gcs_flag = dplyr::case_when(dplyr::between(GCS, 13, 14) ~ 1,
+                         dplyr::between(GCS, 10, 12) ~ 2,
+                         dplyr::between(GCS, 6, 9) ~ 3,
                          GCS < 6 ~ 4),
-    creatinine_flag = dplyr::case_when(between(Creatinine, 1.2, 1.9) ~ 1,
-                                between(Creatinine, 2.0, 3.4) ~ 2,
-                                between(Creatinine, 3.5, 4.9) ~ 3,
+    creatinine_flag = dplyr::case_when(dplyr::between(Creatinine, 1.2, 1.9) ~ 1,
+                                dplyr::between(Creatinine, 2.0, 3.4) ~ 2,
+                                dplyr::between(Creatinine, 3.5, 4.9) ~ 3,
                                 Creatinine > 5.0 ~ 4))
   # cardiac flag
   .data <-  calc_card_sofa(.data, SBP, DBP, Vasopressor, Vasopressor_dose)
@@ -197,7 +202,8 @@ find_sofa <- function(.data, patientid, time, period = 1,
 #'
 #' Finds the current qSOFA score
 #'
-#' @param .data Your dataset
+#' @param .data Your dataset. Must have respiratory rate (rr), sytolic blood pressure (sbp). 
+#' and glasgow coma scale (gcs).
 #' @param patientid A value indicating the unique patient id, usually an encounter number.
 #' @param time A POSIXct value indicating the timestamp for when vitals where taken.
 #' @param period A numeric value that indicates how long one vital is good for,

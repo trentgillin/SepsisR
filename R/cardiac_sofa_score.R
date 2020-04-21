@@ -23,20 +23,24 @@ calc_card_sofa <- function(.data, SBP, DBP, Vasopressor, Vasopressor_dose) {
   .data <- dplyr::mutate(.data, MAP = (!!SBP + (2 * !!DBP))/3)
   
   # warn if detect vasopressors other than dobutamine and dopamine
-  .vaso_check <- dplyr::filter_at(.data, dplyr::vars(!!Vasopressor), dplyr::any_vars(!stringr::str_detect(stringr::str_to_lower(.), "dopamine|dobutamine")))
+  .vaso_check <- dplyr::filter_at(.data, dplyr::vars(!!Vasopressor), dplyr::any_vars(!stringr::str_detect(stringr::str_to_lower(.), "dopamine|dobutamine|norepinephrine|epinephrine")))
   
   if (nrow(.vaso_check) > 0) {
-  warning("Detected vasopressors other than dopamine or dobutamine, as of right now, thos are the only vasopressors considered")
+  warning("Detected vasopressors other than dopamine, dobutamine, norepinephrine, and epinephrine, as of right now, those are the only vasopressors considered")
   }
 
   # create cardiac flag
   .data <- dplyr::mutate(.data, cardiovascular_flag = dplyr::case_when(
-                                            MAP >= 70 ~ 0,
-                                            MAP < 70 ~ 1,
+                                            (stringr::str_detect(stringr::str_to_lower(!!Vasopressor), "norepinephrine|epinephrine") & !!Vasopressor_dose > 0.1) |
+                                              (stringr::str_detect(stringr::str_to_lower(!!Vasopressor), "dopamine") & !!Vasopressor_dose > 15)~ 4,
+                                            (stringr::str_detect(stringr::str_to_lower(!!Vasopressor), "dopamine") &
+                                               !!Vasopressor_dose > 5) | (stringr::str_detect(stringr::str_to_lower(!!Vasopressor), "norepinephrine|epinephrine") &
+                                                                                       !!Vasopressor_dose <= 0.1) ~ 3,
                                             stringr::str_detect(stringr::str_to_lower(!!Vasopressor), "dobutamine")|
-                                            (stringr::str_detect(stringr::str_to_lower(!!Vasopressor), "dopamine") & 
-                                                       !!Vasopressor_dose <= 5)~2
-                                                  ))
+                                              (stringr::str_detect(stringr::str_to_lower(!!Vasopressor), "dopamine") & 
+                                                 !!Vasopressor_dose <= 5 & MAP) ~ 2,
+                                            MAP < 70 ~ 1,
+                                            MAP >= 70 ~ 0))
   return(.data)
 }
 
