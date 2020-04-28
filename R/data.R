@@ -28,7 +28,7 @@
 #'   \item{Platelet}{A list of platelet counts}
 #'   \item{Bili}{Bilirubin, A list of Bilirubin levels}
 #'   \item{GCS}{Glascow Coma Score, A list of GCSs}
-#'   \item{Creatinie}{A list of creatinine levels}
+#'   \item{Creatinine}{A list of creatinine levels}
 #'   \item{SBP}{Systolic Blood Pressure, A list of SBPs}
 #'   \item{DBP}{Dyastolic Blood Pressure, A list of DBPs}
 #'   \item{Vasopressor}{A list of vasopressors given to a patient}

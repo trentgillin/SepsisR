@@ -89,7 +89,7 @@ test_that("SOFA is correct", {
                       patientid = Encounter,
                        time = Service_Timestamp,
                        vitals = c(PaO2 = "Pa02", FiO2 = "Fi02", Platelets = "Platelet", Bilirubin = "Bili", GCS = "GCS", 
-                                  Creatinine = "Creatinie", SBP = "SBP", DBP = "DBP", Vasopressor = "Vasopressor", 
+                                  Creatinine = "Creatinine", SBP = "SBP", DBP = "DBP", Vasopressor = "Vasopressor", 
                                   Vasopressor_Dose = "Vasopressor Dosage"))
   expect_equal(result$sofa_total, 6)
   
