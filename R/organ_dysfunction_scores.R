@@ -186,7 +186,8 @@ find_sofa <- function(.data, patientid, time, period = 1,
                   -time_diff,
                   -lag_time,
                   -tidyselect::contains("_flag"),
-                  -MAP)
+                  -MAP,
+                  -PaO2_FiO2)
 
   # rename columns back
   .data <- dplyr::rename_at(.data, 
