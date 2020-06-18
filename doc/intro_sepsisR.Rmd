@@ -1,0 +1,108 @@
+---
+title: "Introduction To SepsisR"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{intro_sepsisR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, include=FALSE}
+library(SepsisR)
+library(dplyr)
+library(lubridate)
+library(DT)
+```
+
+## Introduction
+
+The clinical presentation of sepsis is complicated. There are so many different organisms that can affect a person and each person can have a different immune response to the same organism. This varied clinical presentation also creates difficult data to work with. As the person in charge of gaining insights from this data you usually have two main tasks: 1) When did sepsis occur? 2) Did they get the right interventions within the right amount time. This seems simple, but it can be tricky. 
+
+It is my goal that this package will make your life a little easier. The SepsisR package has several functions to help you analyze sepsis data using different measures for organ failure. Furthermore, the package includes a few helper functions to help you identify patients that meet the Centers For Disease And Controls (CDC) Adult Sepsis Event (ASE). 
+
+## Assessing Organ Failure
+
+The main function in this package is assess_organ. This function applies either SIRS, qSOFA, or SOFA to the dataset. 
+
+Below is an example of how to use assess_organ with the SIRS score.
+
+```{r sirs_example}
+# practice data
+test_sirs <- SepsisR::sirs_data
+
+# implementing the function
+test_sirs <- SepsisR::assess_organ(.data = test_sirs,
+                          method = "SIRS",
+                          patientid = Encounter,
+                          time = `Service_Timestamp`,
+                          vitals = c("Temperature" = "Temperature",
+                                     "RR" = "RR",
+                                     "HR" = "HR",
+                                     "WBC" = "Wbc"))
+# looking at the results
+datatable(test_sirs)
+```
+
+It is important to note that temperature is in Celsius and White Blood Count (WBC) is in mmm^3. One other parameter that is not shown in the example above is period. Period is a numeric parameter that indicates the number of hours one vital sign is good for, the default is 1 hour. This will fill in any NAs for up to one hour after the original vital sign was taken in order to account for vitals taken at different times. 
+
+SOFA is the most complicated of the three scores, with a lot of vitals needed to accurately compute the score. 
+
+```{r sofa_example}
+
+# get the test dataset
+test_sofa <- sofa_data
+
+# implementing the function
+test_sofa <- SepsisR::assess_organ(.data = test_sofa,
+                                   method = "SOFA",
+                                   patientid = Encounter,
+                                   time = Service_Timestamp,
+                                   vitals = c("PaO2" = "Pa02",
+                                              "FiO2" = "Fi02",
+                                              "Platelets" = "Platelet",
+                                              "Bilirubin" = "Bili",
+                                              "GCS" = "GCS",
+                                              "Creatinine" = "Creatinine",
+                                              "SBP" = "SBP",
+                                              "DBP" = "DBP",
+                                              "Vasopressor" = "Vasopressor",
+                                              "Vasopressor_Dosage" = "Vasopressor Dosage"))
+
+# view results
+test_sofa %>%
+  datatable(options = list(scrollX = T, pageLength = 5))
+```
+
+Once you get past the vitals part, the function operates very similarly to when you implement the SIRS method. It is important to note that FiO2 should be implemented as a percent and not a decimal so 21 and not 0.21. It is also important to note that, as of right now, the only vasopressors that will be considered in the SOFA calcluation are Dopamine, Dobutamine, Epinephrine, and Norepinephrine. Oftentimes Norepinephrine may be listed as levophed, it is important to change the names in your dataset if you want the vasopressor to be included in the score. 
+
+## Centers For Disease (CDC) Adult Sepsis Event (ASE) Functions
+
+In addition to the assess_organ function, the package comes with a few functions that help when analyzing data related to CDC's ASE. 
+
+One important part of the CDC ASE is find out events that happen within a certain window of withdrawing blood cultures, specfically 2 days before and 2 days after. SepsisR includes a function that will allow you to determine if an event falls within that blood culture window. 
+
+```{r blood_culture_window}
+
+# use test sirs data
+test_sirs <- sirs_data
+
+# add on a fake blood culture time
+test_sirs <- test_sirs %>%
+  mutate(blood_cult_time = lubridate::ymd_hms("2018-12-9 09:00:00")) %>%
+  find_bx_window(timestamp_variable = Service_Timestamp,blood_culture_time = blood_cult_time)
+```
+
+I created a fake blood culture time and applied that time to every row with a service timestamp. The result of the function is a boolean column called 'within_window' where TRUE means the time is within the columand FALSE is outside of the column. 
+
+```{r blood_culture_window_cont.}
+test_sirs %>%
+  select(Encounter, Service_Timestamp, blood_cult_time, within_window)
+```
+
