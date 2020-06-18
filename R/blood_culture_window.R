@@ -1,8 +1,8 @@
 #' Function that finds the blood culture window according to the CDC definition of Sepsis.
 #'
 #' According to the CDC, in order for sepsis to take place, ordan dysfunction and antibiotic 
-#' administration must have taken place within 2 dasy before or 2 days after blood cultures 
-#' being ordered. 
+#' administration must have taken place within 2 days before or 2 days after blood cultures 
+#' being drawn. 
 #'
 #' @param .data The dataset you are working with.
 #' @param timestamp_variable The time for the variable you want to test it it occurs within the

@@ -19,8 +19,8 @@ Gives a dataset with a new variable consisting of the difference between two tim
 }
 \description{
 According to the CDC, in order for sepsis to take place, ordan dysfunction and antibiotic 
-administration must have taken place within 2 dasy before or 2 days after blood cultures 
-being ordered.
+administration must have taken place within 2 days before or 2 days after blood cultures 
+being drawn.
 }
 \examples{
 \dontrun{
