@@ -1,6 +1,6 @@
 Package: SepsisR
 Type: Package
-Title: A Simple Set Of Functions For Data Related To Sepsis
+Title: A Simple Set of Functions for Data Related to Sepsis
 Version: 0.1.0
 Author: Trent Gillingham
 Maintainer: The package maintainer <trentgillin@gmail.com>
