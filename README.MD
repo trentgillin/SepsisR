@@ -15,7 +15,7 @@ coverage](https://codecov.io/gh/trentgillin/SepsisR/branch/master/graph/badge.sv
 
 Sepsis can present in many different ways. Many professionals recognize
 sepsis’ presentation, but the literature is undecided when it comes to
-an exact clincal definition. The purpose of this package is to provide
+an exact clinical definition. The purpose of this package is to provide
 functions in order to make the process of identifying and analyzing
 sepsis patients easier. The assess\_organ function is the main function
 of this package; it allows you to assess organ failure using one of the
