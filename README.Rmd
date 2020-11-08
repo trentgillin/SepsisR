@@ -23,11 +23,7 @@ knitr::opts_chunk$set(
 
 Sepsis can present in many different ways. Many professionals recognize
 sepsis' presentation, but the literature is undecided when it comes to an exact
-<<<<<<< HEAD
-clinical definition. The purpose of this package is to provide functions in order 
-=======
 clincal definition. The purpose of this package is to provide functions in order 
->>>>>>> a33b680e6498119168928617918d86b55e4e1e65
 to make the process of identifying and analyzing sepsis patients easier. The assess_organ 
 function is the main function of this package; it allows you to assess organ failure using
 one of the three common organ failure scores, SIRS, SOFA, and qSOFA.
