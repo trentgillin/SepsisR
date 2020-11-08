@@ -3,7 +3,7 @@ Type: Package
 Title: A Simple Set of Functions for Data Related to Sepsis
 Version: 0.1.0
 Author: Trent Gillingham
-Maintainer: Trent Gillingham <trentgillin@gmail.com>
+Maintainer: Trent Gillingham <trentgillin at gmail.com>
 Description: A set of functions that a data analyst working in health care can use to help with data related to Sepsis.
 License: MIT + file LICENSE
 Encoding: UTF-8
