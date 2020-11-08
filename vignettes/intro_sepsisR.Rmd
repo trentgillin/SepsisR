@@ -80,13 +80,13 @@ test_sofa %>%
   datatable(options = list(scrollX = T, pageLength = 5))
 ```
 
-Once you get past the vitals part, the function operates very similarly to when you implement the SIRS method. It is important to note that FiO2 should be implemented as a percent and not a decimal so 21 and not 0.21. It is also important to note that, as of right now, the only vasopressors that will be considered in the SOFA calcluation are Dopamine, Dobutamine, Epinephrine, and Norepinephrine. Oftentimes Norepinephrine may be listed as levophed, it is important to change the names in your dataset if you want the vasopressor to be included in the score. 
+Once you get past the vitals part, the function operates very similarly to when you implement the SIRS method. It is important to note that FiO2 should be implemented as a percent and not a decimal so 21 and not 0.21. It is also important to note that, as of right now, the only vasopressors that will be considered in the SOFA calculation are Dopamine, Dobutamine, Epinephrine, and Norepinephrine. Oftentimes Norepinephrine may be listed as levophed, it is important to change the names in your dataset if you want the vasopressor to be included in the score. 
 
 ## Centers For Disease (CDC) Adult Sepsis Event (ASE) Functions
 
 In addition to the assess_organ function, the package comes with a few functions that help when analyzing data related to CDC's ASE. 
 
-One important part of the CDC ASE is find out events that happen within a certain window of withdrawing blood cultures, specfically 2 days before and 2 days after. SepsisR includes a function that will allow you to determine if an event falls within that blood culture window. 
+One important part of the CDC ASE is find out events that happen within a certain window of withdrawing blood cultures, specifically 2 days before and 2 days after. SepsisR includes a function that will allow you to determine if an event falls within that blood culture window. 
 
 ```{r blood_culture_window}
 
@@ -99,10 +99,11 @@ test_sirs <- test_sirs %>%
   find_bx_window(timestamp_variable = Service_Timestamp,blood_culture_time = blood_cult_time)
 ```
 
-I created a fake blood culture time and applied that time to every row with a service timestamp. The result of the function is a boolean column called 'within_window' where TRUE means the time is within the columand FALSE is outside of the column. 
+I created a fake blood culture time and applied that time to every row with a service timestamp. The result of the function is a boolean column called 'within_window' where TRUE means the time is within the column and FALSE is outside of the column. 
 
 ```{r blood_culture_window_cont.}
 test_sirs %>%
-  select(Encounter, Service_Timestamp, blood_cult_time, within_window)
+  select(Encounter, Service_Timestamp, blood_cult_time, within_window) %>%
+    datatable(options = list(scrollX = T, pageLength = 5))
 ```
 
