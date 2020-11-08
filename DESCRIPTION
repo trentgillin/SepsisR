@@ -4,7 +4,7 @@ Title: A Simple Set Of Functions For Data Related To Sepsis
 Version: 0.1.0
 Author: Trent Gillingham
 Maintainer: The package maintainer <trentgillin@gmail.com>
-Description: This package is a set of functions that a data analyst working in healthcare can use to help with data related to Sepsis.
+Description: A set of functions that a data analyst working in healthcare can use to help with data related to Sepsis.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
