@@ -13,15 +13,15 @@ status](https://travis-ci.org/trentgillin/SepsisR.svg?branch=master)](https://tr
 coverage](https://codecov.io/gh/trentgillin/SepsisR/branch/master/graph/badge.svg)](https://codecov.io/gh/trentgillin/SepsisR?branch=master)
 <!-- badges: end -->
 
-Sepsis has a complicated and varied presentation. Many professionals
-recognize sepsies presentation, but the literature is undecided when it
-comes to an exact clincal definition. The purpose of the package is to
-provide functions in order to make the process of identifying and
-analyzing sepsis patients easier. The assess\_organ function is the main
-function of this package; it allows you to assess organ failure using
-one of the three common organ failure scores, SIRS, SOFA, and qSOFA.
-Currently, all score vital thresholds are based off the MD Calc Website
-(<https://www.mdcalc.com/sirs-sepsis-septic-shock-criteria>). The
+Sepsis can present in many different ways. Many professionals recognize
+sepsis’ presentation, but the literature is undecided when it comes to
+an exact clinical definition. The purpose of this package is to provide
+functions in order to make the process of identifying and analyzing
+sepsis patients easier. The assess\_organ function is the main function
+of this package; it allows you to assess organ failure using one of the
+three common organ failure scores, SIRS, SOFA, and qSOFA. Currently, all
+score vital thresholds are based off the MD Calc Website
+(<https://www.mdcalc.com/sirs-sepsis-septic-shock-criteria>). This
 package also has a few helper functions including find\_bx\_window and
 find\_qad, from the CDC (Centers for Disease and Control) definition of
 Sepsis. This package is not in anyway supported by the CDC or Emory
