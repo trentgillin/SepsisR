@@ -2,9 +2,10 @@ Package: SepsisR
 Type: Package
 Title: A Simple Set of Functions for Data Related to Sepsis
 Version: 0.1.0
-Author: Trent Gillingham
-Maintainer: Trent Gillingham <trentgillin at gmail.com>
-Description: A set of functions that a data analyst working in health care can use to help with data related to Sepsis.
+Authors@R: c(person("Trent", "Gillingham", role = c("aut", "cre")))
+Author: Trent Gillingham [aut, cre]
+Maintainer: Trent Gillingham <trentgillin@gmail.com>
+Description: A set of functions that a data analyst working in health care can use to help with data related to Sepsis. The main focus of this package is to calculate three organ failure scores realted to sepsis, qSOFA, SOFA, and SIRS.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
