@@ -1,6 +1,6 @@
 #' Function that finds the blood culture window according to the CDC definition of Sepsis.
 #'
-#' According to the CDC, in order for sepsis to take place, ordan dysfunction and antibiotic 
+#' According to the CDC, in order for sepsis to take place, organ dysfunction and antibiotic 
 #' administration must have taken place within 2 days before or 2 days after blood cultures 
 #' being drawn. 
 #'
@@ -11,7 +11,7 @@
 #' @return Gives a dataset with a new variable consisting of the difference between two time periods
 #' @examples
 #' \dontrun{
-#' result <- find_bx_window(data, servie_time, culture_draw_time)
+#' result <- find_bx_window(data, service_time, culture_draw_time)
 #' }
 #' @export
 

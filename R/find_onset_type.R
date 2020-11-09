@@ -7,7 +7,7 @@
 #' A function used to determine if a patient has community sepsis or hospital onset sepsis
 #' @param .data Your dataset
 #' @param blood_day This is a Date column that represents when your blood cultures were taken
-#' @param first_qad This is a Date column that represents your first qualifying antibiotic day (see CDC defintion) time
+#' @param first_qad This is a Date column that represents your first qualifying antibiotic day (see CDC definition) time
 #' @param patientid A unique identifier for each patient
 #' @param admission_day A Date object for the day a patient was admitted to the hospital
 #' @examples 

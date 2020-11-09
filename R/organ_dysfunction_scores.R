@@ -1,6 +1,6 @@
 #' SIRS calculation function
 #'
-#' Finds the current organ failure score using SIRS (Systematic Inflammatory Response Syndrom)
+#' Finds the current organ failure score using SIRS (Systematic Inflammatory Response Syndrome)
 #'
 #' @param .data The dataset you are working with. Must include heart rate (hr), respiratory rate (rr),
 #' white blood cell count (wbc), and temperature.
@@ -77,14 +77,14 @@ find_sirs <- function(.data, patientid, time, period = 1,
 #' Finds the current organ failure score using SOFA.
 #'
 #' @param .data The dataset you are working with. Must contain 
-#' PaO2, FiO2, bilirubin, vasopressor, vasopressoage dosage, creatinine, glasgow coma scale (gcs), 
+#' PaO2, FiO2, bilirubin, vasopressor, vasopressor dosage, creatinine, glasgow coma scale (gcs), 
 #' systolic blood pressure (sbc), diastolic blood pressure (dbc), and platelet count columns.
 #' @param patientid A value indicating the unique patient id, usually an encounter number.
 #' @param time A POSIXct value indicating the timestamp for when vitals where taken.
 #' @param period A numeric value that indicates how long one vital is good for, default is one hour.
 #' Note: This will only fill in missing vitals.
 #' @param vitals A character vector denoting what columns represent the vitals. It is important to 
-#' remember that right now only dopamine and dobutamin are considered in vasopressors used.Platelets should 
+#' remember that right now only dopamine and dobutamine are considered in vasopressors used.Platelets should 
 #' be in 10^3/microliter and FiO2 should be listed as a percent, not a decimal.Furthermore bilirubin
 #' should be in micrograms/decilitre. 
 #' needed to calculate SOFA
@@ -203,8 +203,8 @@ find_sofa <- function(.data, patientid, time, period = 1,
 #'
 #' Finds the current qSOFA score
 #'
-#' @param .data Your dataset. Must have respiratory rate (rr), sytolic blood pressure (sbp). 
-#' and glasgow coma scale (gcs).
+#' @param .data Your dataset. Must have respiratory rate (rr), systolic blood pressure (sbp). 
+#' and glascow coma scale (gcs).
 #' @param patientid A value indicating the unique patient id, usually an encounter number.
 #' @param time A POSIXct value indicating the timestamp for when vitals where taken.
 #' @param period A numeric value that indicates how long one vital is good for,

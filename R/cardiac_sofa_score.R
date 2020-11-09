@@ -4,7 +4,7 @@
 #'
 #'@param .data Your dataset
 #' @param SBP A numeric column that represents the systolic blood pressure
-#' @param DBP A numeric column that represents the dystolic blood pressure
+#' @param DBP A numeric column that represents the dyastolic blood pressure
 #' @param Vasopressor A character column that represents a list of vasopressors 
 #' given to a patient
 #' @param Vasopressor_dose A numeric column that represents the dosage of vasopressor 

@@ -1,9 +1,9 @@
 #' Function to get the baseline lab value
-#' @param .data Your dataste
+#' @param .data Your dataset
 #' @param labvalue Your lab value, can be bilirubin, creatinine, GFR, or platelets
 #' @param  patientid A column denoting a unique patient identifier
 #' @param result_day A Date column denoting when a lab resulted
-#' @param onset_type A chacter value denoting if an encounter is community or hospital onset
+#' @param onset_type A character value denoting if an encounter is community or hospital onset
 #' @param blood A POSIXct indicating the blood culture time
 #' @rdname get_baseline
 #' @examples 

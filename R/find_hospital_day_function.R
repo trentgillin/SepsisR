@@ -1,4 +1,4 @@
-#' Function to calculate what hospital day event occured
+#' Function to calculate what hospital day event occurred
 #' @param .data Your data
 #' @param event Date object to be used against admit time
 #' @param patientid A column denoting a unique patient identifier
