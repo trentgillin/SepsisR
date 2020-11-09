@@ -27,7 +27,7 @@ one hour. Note: This will only fill in missing vitals.}
 to calculate SIRS, it is important to have temperature in Celsius and WBC in mmm^3}
 }
 \description{
-Finds the current organ failure score using SIRS (Systematic Inflammatory Response Syndrom)
+Finds the current organ failure score using SIRS (Systematic Inflammatory Response Syndrome)
 }
 \examples{
 \dontrun{

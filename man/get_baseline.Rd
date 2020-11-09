@@ -13,7 +13,7 @@ get_baseline(.data, labvalue, patientid, result_day, onset_type, blood)
 \method{get_baseline}{plate}(.data, labvalue, patientid, result_day, onset_type, blood)
 }
 \arguments{
-\item{.data}{Your dataste}
+\item{.data}{Your dataset}
 
 \item{labvalue}{Your lab value, can be bilirubin, creatinine, GFR, or platelets}
 
@@ -21,7 +21,7 @@ get_baseline(.data, labvalue, patientid, result_day, onset_type, blood)
 
 \item{result_day}{A Date column denoting when a lab resulted}
 
-\item{onset_type}{A chacter value denoting if an encounter is community or hospital onset}
+\item{onset_type}{A character value denoting if an encounter is community or hospital onset}
 
 \item{blood}{A POSIXct indicating the blood culture time}
 }

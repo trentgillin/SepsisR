@@ -12,7 +12,7 @@ find_onset(.data, blood_day, first_qad, patientid, admission_day)
 
 \item{blood_day}{This is a Date column that represents when your blood cultures were taken}
 
-\item{first_qad}{This is a Date column that represents your first qualifying antibiotic day (see CDC defintion) time}
+\item{first_qad}{This is a Date column that represents your first qualifying antibiotic day (see CDC definition) time}
 
 \item{patientid}{A unique identifier for each patient}
 

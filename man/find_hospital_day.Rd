@@ -3,7 +3,7 @@
 \name{find_hospital_day}
 \alias{find_hospital_day}
 \alias{find_hospital_day.default}
-\title{Function to calculate what hospital day event occured}
+\title{Function to calculate what hospital day event occurred}
 \usage{
 find_hospital_day(.data, event, patientid, admission_day)
 
@@ -19,7 +19,7 @@ find_hospital_day(.data, event, patientid, admission_day)
 \item{admission_day}{First day that a patient arrived at the hospital}
 }
 \description{
-Function to calculate what hospital day event occured
+Function to calculate what hospital day event occurred
 
 default method
 }

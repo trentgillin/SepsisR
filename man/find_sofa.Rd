@@ -15,7 +15,7 @@ find_sofa(
 }
 \arguments{
 \item{.data}{The dataset you are working with. Must contain 
-PaO2, FiO2, bilirubin, vasopressor, vasopressoage dosage, creatinine, glasgow coma scale (gcs), 
+PaO2, FiO2, bilirubin, vasopressor, vasopressor dosage, creatinine, glasgow coma scale (gcs), 
 systolic blood pressure (sbc), diastolic blood pressure (dbc), and platelet count columns.}
 
 \item{patientid}{A value indicating the unique patient id, usually an encounter number.}
@@ -26,7 +26,7 @@ systolic blood pressure (sbc), diastolic blood pressure (dbc), and platelet coun
 Note: This will only fill in missing vitals.}
 
 \item{vitals}{A character vector denoting what columns represent the vitals. It is important to 
-remember that right now only dopamine and dobutamin are considered in vasopressors used.Platelets should 
+remember that right now only dopamine and dobutamine are considered in vasopressors used.Platelets should 
 be in 10^3/microliter and FiO2 should be listed as a percent, not a decimal.Furthermore bilirubin
 should be in micrograms/decilitre. 
 needed to calculate SOFA}
