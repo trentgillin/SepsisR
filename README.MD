@@ -21,11 +21,10 @@ sepsis patients easier. The assess\_organ function is the main function
 of this package; it allows you to assess organ failure using one of the
 three common organ failure scores, SIRS, SOFA, and qSOFA. Currently, all
 score vital thresholds are based off the MD Calc Website
-(<https://www.mdcalc.com/sirs-sepsis-septic-shock-criteria>). This
-package also has a few helper functions including find\_bx\_window and
-find\_qad, from the CDC (Centers for Disease and Control) definition of
-Sepsis. This package is not in anyway supported by the CDC or Emory
-Healthcare.
+(<https://www.mdcalc.com>). This package also has a few helper functions
+including find\_bx\_window and find\_qad, from the CDC (Centers for
+Disease and Control) definition of Sepsis. This package is not in anyway
+supported by the CDC or Emory Healthcare.
 
 ## Installation
 
