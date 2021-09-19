@@ -4,7 +4,8 @@
 \name{sirs_data}
 \alias{sirs_data}
 \title{sirs dataset}
-\format{A data frame with 9 rows and 6 variables:
+\format{
+A data frame with 9 rows and 6 variables:
 \describe{
   \item{Encounter}{A unique patient id}
   \item{Service_Timestamp}{Timestamps of when a variable was taken}
@@ -13,7 +14,8 @@
   \item{RR}{Respiratory Rate, A list of respiratory rate readings}
   \item{Wbc}{White Blood Cell, A list of white blood cell readings in mmm^3}
   ...
-}}
+}
+}
 \usage{
 sirs_data
 }

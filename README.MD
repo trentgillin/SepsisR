@@ -49,7 +49,7 @@ assess_organ(sirs_data, method = "SIRS",
                            "WBC" = "Wbc", 
                     "Temperature" = "Temperature",
                     "HR" = "HR"))
-#> # A tibble: 9 x 7
+#> # A tibble: 9 × 7
 #>   Encounter Service_Timestamp      HR Temperature    RR   Wbc sirs_total
 #>       <dbl> <dttm>              <dbl>       <dbl> <dbl> <dbl>      <dbl>
 #> 1         1 2018-12-11 08:00:00   120          31    20  5000          3
@@ -62,3 +62,14 @@ assess_organ(sirs_data, method = "SIRS",
 #> 8         1 2018-12-11 11:30:00    75          33    20  5000          3
 #> 9         1 2018-12-11 12:00:00    81          31    20  5000          3
 ```
+
+## MDCalc Contributers
+
+On MDCalc, scores are contributed by healthcare providers. Below are the
+listed contributors for each score used in the in the SepsisR package.
+
+SIRS: Robert A. Balk, MD
+
+SOFA: Jean-Louis Vincent, MD
+
+qSOFA: Christopher Seymour, MD

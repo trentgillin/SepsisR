@@ -204,7 +204,7 @@ find_sofa <- function(.data, patientid, time, period = 1,
 #' Finds the current qSOFA score
 #'
 #' @param .data Your dataset. Must have respiratory rate (rr), systolic blood pressure (sbp). 
-#' and glascow coma scale (gcs).
+#' and glasgow coma scale (gcs).
 #' @param patientid A value indicating the unique patient id, usually an encounter number.
 #' @param time A POSIXct value indicating the timestamp for when vitals where taken.
 #' @param period A numeric value that indicates how long one vital is good for,

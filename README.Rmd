@@ -56,3 +56,15 @@ assess_organ(sirs_data, method = "SIRS",
 					"Temperature" = "Temperature",
 					"HR" = "HR"))
 ```
+
+
+## MDCalc Contributers
+
+On MDCalc, scores are contributed by healthcare providers. Below are the listed contributors for each score used in the in the SepsisR package. 
+
+SIRS: Robert A. Balk, MD
+
+SOFA: Jean-Louis Vincent, MD
+
+qSOFA: Christopher Seymour, MD
+

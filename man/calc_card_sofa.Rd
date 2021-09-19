@@ -11,7 +11,7 @@ calc_card_sofa(.data, SBP, DBP, Vasopressor, Vasopressor_dose)
 
 \item{SBP}{A numeric column that represents the systolic blood pressure}
 
-\item{DBP}{A numeric column that represents the dyastolic blood pressure}
+\item{DBP}{A numeric column that represents the diastolic blood pressure}
 
 \item{Vasopressor}{A character column that represents a list of vasopressors 
 given to a patient}

@@ -4,15 +4,17 @@
 \name{qsofa_data}
 \alias{qsofa_data}
 \title{qsofa dataset}
-\format{A data frame with 9 rows and 5 variables:
+\format{
+A data frame with 9 rows and 5 variables:
 \describe{
   \item{Encounter}{A unique patient id}
   \item{Service_Timestamp}{Timestamps of when a variable was taken}
   \item{RR}{Respiratory Rate, A list of respiratory rate readings}
   \item{SBP}{Systolic Blood Pressure, A list of SBPs}
-  \item{GCS}{Glascow Coma Score, A list of GCSs}
+  \item{GCS}{Glasgow Coma Score, A list of GCSs}
   ...
-}}
+}
+}
 \usage{
 qsofa_data
 }
