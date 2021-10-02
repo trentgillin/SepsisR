@@ -23,6 +23,6 @@ given, needs to be in mcg/kg/min}
 Finds the current cardiac score for the SOFA score
 }
 \examples{
-\dontrun{
-cardiovascular_flag = calc_card_sofa(.data, sbp, dbp, vasopressor, vasopressor_dose)}
+cardiovascular_flag = calc_card_sofa(sofa_data, SBP = SBP, DBP = DBP, Vasopressor = Vasopressor, 
+   Vasopressor_dose = "Vasopressor Dosage")
 }

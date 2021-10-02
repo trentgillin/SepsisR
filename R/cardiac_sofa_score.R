@@ -10,8 +10,8 @@
 #' @param Vasopressor_dose A numeric column that represents the dosage of vasopressor 
 #' given, needs to be in mcg/kg/min
 #' @examples
-#' \dontrun{
-#' cardiovascular_flag = calc_card_sofa(.data, sbp, dbp, vasopressor, vasopressor_dose)}
+#' cardiovascular_flag = calc_card_sofa(sofa_data, SBP = SBP, DBP = DBP, Vasopressor = Vasopressor, 
+#'    Vasopressor_dose = "Vasopressor Dosage")
 
 calc_card_sofa <- function(.data, SBP, DBP, Vasopressor, Vasopressor_dose) {
   SBP <- rlang::enquo(SBP)

@@ -73,7 +73,7 @@ test_sofa <- SepsisR::assess_organ(.data = test_sofa,
                                               "SBP" = "SBP",
                                               "DBP" = "DBP",
                                               "Vasopressor" = "Vasopressor",
-                                              "Vasopressor_Dosage" = "Vasopressor Dosage"))
+                                              "Vasopressor_dose" = "Vasopressor Dosage"))
 
 # view results
 test_sofa %>%

@@ -41,6 +41,7 @@ test_that("qSOFA is crorrect", {
   test_qsofa_1 <- test_qsofa[1,]
   result <- find_qsofa(.data = test_qsofa_1,
                        time = Service_Timestamp,
+                       patientid = Encounter,
                        vitals = c("RR" = "RR",
                                   "SBP" = "SBP",
                                   "GCS" = "GCS"))
@@ -54,6 +55,7 @@ test_that("qSOFA period functionaliy is working and vitals good for more than 1 
                   SBP = dplyr::if_else(Service_Timestamp == lubridate::ymd_hms("2019-10-12 12:00:00"), as.double(NA), SBP))
   result <- find_qsofa(.data = test_qsofa_2,
                        time = Service_Timestamp,
+                       patientid = Encounter,
                        vitals = c("RR" = "RR",
                                   "SBP" = "SBP",
                                   "GCS" = "GCS"),
@@ -90,7 +92,7 @@ test_that("SOFA is correct", {
                        time = Service_Timestamp,
                        vitals = c(PaO2 = "Pa02", FiO2 = "Fi02", Platelets = "Platelet", Bilirubin = "Bili", GCS = "GCS", 
                                   Creatinine = "Creatinine", SBP = "SBP", DBP = "DBP", Vasopressor = "Vasopressor", 
-                                  Vasopressor_Dose = "Vasopressor Dosage"))
+                                  Vasopressor_dose = "Vasopressor Dosage"))
   expect_equal(result$sofa_total, 6)
   
 })

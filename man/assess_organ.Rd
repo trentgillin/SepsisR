@@ -35,3 +35,8 @@ Returns a data frame or tibble with a new column that denotes the desired score
 \description{
 Finds the current organ failure score.
 }
+\examples{
+score <- assess_organ(sirs_data, method = "SIRS", patientid = Encounter, 
+time = Service_Timestamp, vitals = c("RR" = "RR","HR" = "HR","Temperature" = "Temperature",
+"WBC" = "Wbc"))
+}

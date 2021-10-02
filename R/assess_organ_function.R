@@ -13,9 +13,9 @@
 #' failure score.
 #' @return Returns a data frame or tibble with a new column that denotes the desired score
 #' @examples
-#' score <- assess_organ(dataset, method = "SIRS", patientid = Encounter, 
-#' time = Service_Timestamp, vitals = c("RR" = NA,"HR" = NA,"Temperature" = NA,
-#' "WBC" = NA)}
+#' score <- assess_organ(sirs_data, method = "SIRS", patientid = Encounter, 
+#' time = Service_Timestamp, vitals = c("RR" = "RR","HR" = "HR","Temperature" = "Temperature",
+#' "WBC" = "Wbc"))
 #' @export
 
 assess_organ <- function(.data, method = c("SIRS", "SOFA", "qSOFA"),

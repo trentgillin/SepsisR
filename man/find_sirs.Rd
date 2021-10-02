@@ -29,3 +29,7 @@ to calculate SIRS, it is important to have temperature in Celsius and WBC in mmm
 \description{
 Finds the current organ failure score using SIRS (Systematic Inflammatory Response Syndrome)
 }
+\examples{
+dataset <- find_sirs(sirs_data, Encounter, Service_Timestamp, 
+   vitals = c("RR" = "RR", "Temperature" = "Temperature", "HR" = "HR", "WBC" = "Wbc"))
+}

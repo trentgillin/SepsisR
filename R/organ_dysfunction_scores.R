@@ -11,8 +11,8 @@
 #' @param vitals A character vector denoting what columns represent the vitals needed 
 #' to calculate SIRS, it is important to have temperature in Celsius and WBC in mmm^3
 #' @examples
-#' dataset <- find_sirs(dataset, Encounter, "Service_Timestamp, 
-#'  vitals = c("RR" = "RR", "Temperature" = "Temperature", "HR" = "HR", "WBC" = "Wbc"))
+#' dataset <- find_sirs(sirs_data, Encounter, Service_Timestamp, 
+#'    vitals = c("RR" = "RR", "Temperature" = "Temperature", "HR" = "HR", "WBC" = "Wbc"))
 #' @export
 
 find_sirs <- function(.data, patientid, time, period = 1,
@@ -272,4 +272,4 @@ utils::globalVariables(c("time_diff", "lag_time", "RR", "SBP", "DBP", "GCS", "Cr
                          "HR", "wb_flag", "rr_flag", "sbp_flag", "gcs_flag",
                          "hr_flag", "temp_flag", "wbc_flag", "PaO2_FiO2_flag",
                          "cardiovascular_flag", "creatinine_flag", "platelets_flag",
-                       "bilirubin_flag"))
+                       "bilirubin_flag", "qsofa_total", "sirs_total", "sofa_total"))
