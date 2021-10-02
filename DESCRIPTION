@@ -29,4 +29,5 @@ Suggests:
     knitr,
     rmarkdown,
     DT
+URL: https://trentgillin.github.io/SepsisR/
 VignetteBuilder: knitr
