@@ -1,10 +1,15 @@
 Package: SepsisR
 Type: Package
-Title: A Simple Set of Functions for Data Related to Sepsis
+Title: Data analysis for sepsis made easy
 Version: 0.1.0
 Authors@R: person("Trent", "Gillingham", email = "trentgillin@gmail.com",
                   role = c("aut", "cre"))
-Description: A set of functions that a data analyst working in health care can use to help with data related to Sepsis. The main focus of this package is to calculate three organ failure scores related to sepsis, qSOFA, SOFA, and SIRS.
+Description: A set of functions that a data analyst working in health care can use to help with data related to Sepsis, 
+        a bodily reponse to an extensive infeciton. The main focus of this package is to calculate three organ failure 
+        scores related to sepsis Centers For Disease Control, (2021) https://www.cdc.gov/sepsis/what-is-sepsis.html: 
+        Sequential Organ Failure Assessment (SOFA) Vincent, () https://www.mdcalc.com/sequential-organ-failure-assessment-sofa-score
+        Quick Sequential Organ Failure Assessment (qSOFA) Seymour, () https://www.mdcalc.com/qsofa-quick-sofa-score-sepsis,
+        and Systematic Inflammatory Response Syndrome (SIRS) Balk, () https://www.mdcalc.com/sirs-sepsis-septic-shock-criteria.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

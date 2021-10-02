@@ -29,12 +29,9 @@ one hour. Note: This will only fill in missing vitals.}
 \item{vitals}{A character vector denoting the certain vitals necessary for each organ 
 failure score.}
 }
+\value{
+Returns a data frame or tibble with a new column that denotes the desired score
+}
 \description{
 Finds the current organ failure score.
-}
-\examples{
-\dontrun{
-score <- assess_organ(dataset, method = "SIRS", patientid = Encounter, 
-time = Service_Timestamp, vitals = c("RR" = NA,"HR" = NA,"Temperature" = NA,
-"WBC" = NA)}
 }
