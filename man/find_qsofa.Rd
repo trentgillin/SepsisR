@@ -30,6 +30,6 @@ needed to calculate qSOFA}
 Finds the current qSOFA score
 }
 \examples{
-result <- find_qsofa(qsofa_data, patientid = Encounter, time = Service_Time, 
-vitals = c("RR" = "rr", "SBP" = "sbp", "GCS" = "gcs"))
+result <- find_qsofa(qsofa_data, patientid = Encounter, time = Service_Timestamp, 
+vitals = c("RR" = "RR", "SBP" = "SBP", "GCS" = "GCS"))
 }

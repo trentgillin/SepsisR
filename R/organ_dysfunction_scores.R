@@ -11,10 +11,8 @@
 #' @param vitals A character vector denoting what columns represent the vitals needed 
 #' to calculate SIRS, it is important to have temperature in Celsius and WBC in mmm^3
 #' @examples
-#' \dontrun{
-#' dataset <- find_sirs(dataset, Encounter, `Vital Timestamp`, 
-#'  vitals = c("RR" = "rr", "Temperature" = "temperature", "HR" = "hr", "WBC" = "Wbc"))
-#' }
+#' dataset <- find_sirs(dataset, Encounter, "Service_Timestamp, 
+#'  vitals = c("RR" = "RR", "Temperature" = "Temperature", "HR" = "HR", "WBC" = "Wbc"))
 #' @export
 
 find_sirs <- function(.data, patientid, time, period = 1,
@@ -94,9 +92,9 @@ find_sirs <- function(.data, patientid, time, period = 1,
 #' should be in micrograms/decilitre. 
 #' needed to calculate SOFA
 #' @examples
-#' result <- find_sofa(.data = sofa_data, pateintid = Encounter, time = Service_Timestamp, 
-#'  vitals = c("PaO2" = "Pa02", "FiO2" = "FiO2", 
-#'  "Platelets" = "Platelets", "Bilirubin" = "Bilirubin", "GCS" = "GCS", 
+#' result <- find_sofa(.data = sofa_data, patientid = Encounter, time = Service_Timestamp, 
+#'  vitals = c("PaO2" = "Pa02", "FiO2" = "Fi02", 
+#'  "Platelets" = "Platelet", "Bilirubin" = "Bili", "GCS" = "GCS", 
 #'  "Creatinine" = "Creatinine", "SBP" = "SBP", "DBP" = "DBP", "Vasopressor" = "Vasopressor", 
 #'  "Vasopressor_dose" = "Vasopressor Dosage"))
 #' @export
@@ -207,8 +205,8 @@ find_sofa <- function(.data, patientid, time, period = 1,
 #' @param vitals A character vector denoting what columns represent the vitals 
 #' needed to calculate qSOFA
 #' @examples
-#' result <- find_qsofa(qsofa_data, patientid = Encounter, time = Service_Time, 
-#' vitals = c("RR" = "rr", "SBP" = "sbp", "GCS" = "gcs"))
+#' result <- find_qsofa(qsofa_data, patientid = Encounter, time = Service_Timestamp, 
+#' vitals = c("RR" = "RR", "SBP" = "SBP", "GCS" = "GCS"))
 #' @export
 
 find_qsofa <- function(.data, patientid, time, period = 1,

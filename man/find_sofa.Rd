@@ -10,7 +10,7 @@ find_sofa(
   time,
   period = 1,
   vitals = c(PaO2 = NA, FiO2 = NA, Platelets = NA, Bilirubin = NA, GCS = NA, Creatinine
-    = NA, SBP = NA, DBP = NA, Vasopressor = NA, Vasopressor_Dose = NA)
+    = NA, SBP = NA, DBP = NA, Vasopressor = NA, Vasopressor_dose = NA)
 )
 }
 \arguments{
@@ -35,9 +35,9 @@ needed to calculate SOFA}
 Finds the current organ failure score using SOFA.
 }
 \examples{
-result <- find_sofa(.data = sofa_data, pateintid = Encounter, time = Service_Timestamp, 
- vitals = c("PaO2" = "Pa02", "FiO2" = "FiO2", 
- "Platelets" = "Platelets", "Bilirubin" = "Bilirubin", "GCS" = "GCS", 
+result <- find_sofa(.data = sofa_data, patientid = Encounter, time = Service_Timestamp, 
+ vitals = c("PaO2" = "Pa02", "FiO2" = "Fi02", 
+ "Platelets" = "Platelet", "Bilirubin" = "Bili", "GCS" = "GCS", 
  "Creatinine" = "Creatinine", "SBP" = "SBP", "DBP" = "DBP", "Vasopressor" = "Vasopressor", 
  "Vasopressor_dose" = "Vasopressor Dosage"))
 }

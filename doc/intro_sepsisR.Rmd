@@ -73,7 +73,7 @@ test_sofa <- SepsisR::assess_organ(.data = test_sofa,
                                               "SBP" = "SBP",
                                               "DBP" = "DBP",
                                               "Vasopressor" = "Vasopressor",
-                                              "Vasopressor_Dosage" = "Vasopressor Dosage"))
+                                              "Vasopressor_dose" = "Vasopressor Dosage"))
 
 # view results
 test_sofa %>%
@@ -103,6 +103,7 @@ I created a fake blood culture time and applied that time to every row with a se
 
 ```{r blood_culture_window_cont.}
 test_sirs %>%
-  select(Encounter, Service_Timestamp, blood_cult_time, within_window)
+  select(Encounter, Service_Timestamp, blood_cult_time, within_window) %>%
+  datatable()
 ```
 
