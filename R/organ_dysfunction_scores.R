@@ -72,7 +72,7 @@ find_sirs <- function(.data, patientid, time, period = 1,
   .data <- dplyr::select(.data, !!patientid, !!time, sirs_total)
   
   # add back to orignial
-  .data <- dplyr::left_join(.orig, .data, by = c(quo_name(patientid), quo_name(time)))
+  .data <- dplyr::left_join(.orig, .data, by = c(rlang::quo_name(patientid), rlang::quo_name(time)))
 
   return(.data)
 }
@@ -111,7 +111,7 @@ find_sofa <- function(.data, patientid, time, period = 1,
                                  "SBP" = NA,
                                  "DBP" = NA,
                                  "Vasopressor" = NA,
-                                 "Vasopressor_Dose" = NA)) {
+                                 "Vasopressor_dose" = NA)) {
   if (length(vitals) != 10) {
     stop("You need PaO2, FiO2, Platelets, Bilirubin, 
          GCS, Creatinie, SBP, DBP, Vasopressor, and Vasopressor Doses to calculate SOFA")
@@ -184,19 +184,11 @@ find_sofa <- function(.data, patientid, time, period = 1,
                  sofa_total = PaO2_FiO2_flag + platelets_flag + bilirubin_flag +
                    gcs_flag + cardiovascular_flag + creatinine_flag)
 
-  # select important columns
-  .data <- dplyr::select(.data,
-                  -time_diff,
-                  -lag_time,
-                  -tidyselect::contains("_flag"),
-                  -MAP,
-                  -PaO2_FiO2)
-
   # get important columns
-  .data <- dplyr::select(.data, !!patientid, !!time, sirs_total)
+  .data <- dplyr::select(.data, !!patientid, !!time, sofa_total)
   
   # add back to orignial
-  .data <- dplyr::left_join(.orig, .data, by = c(quo_name(patientid), quo_name(time)))
+  .data <- dplyr::left_join(.orig, .data, by = c(rlang::quo_name(patientid), rlang::quo_name(time)))
 
   return(.data)
 }
@@ -267,10 +259,10 @@ find_qsofa <- function(.data, patientid, time, period = 1,
   .data <- dplyr::mutate(.data, qsofa_total = rr_flag + sbp_flag + gcs_flag)
 
   # get important columns
-  .data <- dplyr::select(.data, !!patientid, !!time, sirs_total)
+  .data <- dplyr::select(.data, !!patientid, !!time, qsofa_total)
   
   # add back to orignial
-  .data <- dplyr::left_join(.orig, .data, by = c(quo_name(patientid), quo_name(time)))
+  .data <- dplyr::left_join(.orig, .data, by = c(rlang::quo_name(patientid), rlang::quo_name(time)))
 
   return(.data)
 }
