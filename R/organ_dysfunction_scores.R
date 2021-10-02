@@ -25,6 +25,9 @@ find_sirs <- function(.data, patientid, time, period = 1,
 
   patientid <- rlang::enquo(patientid)
   time <- rlang::enquo(time)
+  
+  # save orignial
+  .orig <- .data
 
   # make sure have all required vitals
   if (length(vitals) != 4) {
@@ -32,8 +35,7 @@ find_sirs <- function(.data, patientid, time, period = 1,
   }
 
   # Need to make sure that columns translate from user input
-  .data <- dplyr::rename_at(.data, dplyr::vars(vitals), 
-                            list(~c("Temperature", "RR", "HR", "WBC")))
+  .data <- dplyr::select(.data, !!patientid, !!time, tidyselect::all_of(vitals))
 
   # group by patient
   .data <- dplyr::group_by(.data, !!patientid)
@@ -65,9 +67,12 @@ find_sirs <- function(.data, patientid, time, period = 1,
 
   # remove flag variables
   .data <- dplyr::select(.data, -tidyselect::contains("_flag"), -time_diff, -lag_time)
-
-  # rename columns back to what they were
-  .data <- dplyr::rename_at(.data, dplyr::vars(Temperature, RR, HR, WBC), list(~c(vitals)))
+  
+  # get important columns
+  .data <- dplyr::select(.data, !!patientid, !!time, sirs_total)
+  
+  # add back to orignial
+  .data <- dplyr::left_join(.orig, .data, by = c(quo_name(patientid), quo_name(time)))
 
   return(.data)
 }
@@ -89,13 +94,11 @@ find_sirs <- function(.data, patientid, time, period = 1,
 #' should be in micrograms/decilitre. 
 #' needed to calculate SOFA
 #' @examples
-#' \dontrun{
-#' result <- find_sofa(.data = your_data, pateintid = Encounter, time = Service_Timestamp, 
+#' result <- find_sofa(.data = sofa_data, pateintid = Encounter, time = Service_Timestamp, 
 #'  vitals = c("PaO2" = "Pa02", "FiO2" = "FiO2", 
 #'  "Platelets" = "Platelets", "Bilirubin" = "Bilirubin", "GCS" = "GCS", 
 #'  "Creatinine" = "Creatinine", "SBP" = "SBP", "DBP" = "DBP", "Vasopressor" = "Vasopressor", 
 #'  "Vasopressor_dose" = "Vasopressor Dosage"))
-#' }
 #' @export
 
 find_sofa <- function(.data, patientid, time, period = 1,
@@ -116,12 +119,12 @@ find_sofa <- function(.data, patientid, time, period = 1,
 
   patientid <- rlang::enquo(patientid)
   time <- rlang::enquo(time)
+  
+  # save orignial
+  .orig <- .data
 
-  # rename columns
-  .data <- dplyr::rename_at(.data, dplyr::vars(vitals), list(~c("PaO2", "FiO2", "Platelets", 
-                                                         "Bilirubin", "GCS", "Creatinine", "SBP", 
-                                                         "DBP", "Vasopressor", 
-                                                         "Vasopressor_dose")))
+  # Need to make sure that columns translate from user input
+  .data <- dplyr::select(.data, !!patientid, !!time, tidyselect::all_of(vitals))
 
   # calculate Pao2/FiO2
   .data <- dplyr::mutate(.data, FiO2 = FiO2 * 100,
@@ -189,11 +192,11 @@ find_sofa <- function(.data, patientid, time, period = 1,
                   -MAP,
                   -PaO2_FiO2)
 
-  # rename columns back
-  .data <- dplyr::rename_at(.data, 
-                            dplyr::vars(PaO2, FiO2, Platelets, Bilirubin, GCS, 
-                                 Creatinine, SBP, DBP, Vasopressor, Vasopressor_dose), 
-                            list(~vitals))
+  # get important columns
+  .data <- dplyr::select(.data, !!patientid, !!time, sirs_total)
+  
+  # add back to orignial
+  .data <- dplyr::left_join(.orig, .data, by = c(quo_name(patientid), quo_name(time)))
 
   return(.data)
 }
@@ -212,10 +215,8 @@ find_sofa <- function(.data, patientid, time, period = 1,
 #' @param vitals A character vector denoting what columns represent the vitals 
 #' needed to calculate qSOFA
 #' @examples
-#' \dontrun{
-#' result <- find_qsofa(data, patientid = Encounter, time = Service_Time, 
+#' result <- find_qsofa(qsofa_data, patientid = Encounter, time = Service_Time, 
 #' vitals = c("RR" = "rr", "SBP" = "sbp", "GCS" = "gcs"))
-#' }
 #' @export
 
 find_qsofa <- function(.data, patientid, time, period = 1,
@@ -229,9 +230,12 @@ find_qsofa <- function(.data, patientid, time, period = 1,
 
   patientid <- rlang::enquo(patientid)
   time <- rlang::enquo(time)
+  
+  # save orignial
+  .orig <- .data
 
-  # rename columns
-  .data <- dplyr::rename_at(.data, dplyr::vars(vitals), list(~c("RR", "SBP", "GCS")))
+  # Need to make sure that columns translate from user input
+  .data <- dplyr::select(.data, !!patientid, !!time, tidyselect::all_of(vitals))
 
   # group data
   .data <- dplyr::group_by(.data, !!patientid)
@@ -262,14 +266,11 @@ find_qsofa <- function(.data, patientid, time, period = 1,
   # sum up
   .data <- dplyr::mutate(.data, qsofa_total = rr_flag + sbp_flag + gcs_flag)
 
-  # remove time_diff, and flags
-  .data <- dplyr::select(.data,
-                  -time_diff,
-                  -lag_time,
-                  -tidyselect::contains("_flag"))
-
-  # rename columns back
-  .data <- dplyr::rename_at(.data, dplyr::vars(RR, SBP, GCS), list(~vitals))
+  # get important columns
+  .data <- dplyr::select(.data, !!patientid, !!time, sirs_total)
+  
+  # add back to orignial
+  .data <- dplyr::left_join(.orig, .data, by = c(quo_name(patientid), quo_name(time)))
 
   return(.data)
 }

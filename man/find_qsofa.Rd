@@ -30,8 +30,6 @@ needed to calculate qSOFA}
 Finds the current qSOFA score
 }
 \examples{
-\dontrun{
-result <- find_qsofa(data, patientid = Encounter, time = Service_Time, 
+result <- find_qsofa(qsofa_data, patientid = Encounter, time = Service_Time, 
 vitals = c("RR" = "rr", "SBP" = "sbp", "GCS" = "gcs"))
-}
 }

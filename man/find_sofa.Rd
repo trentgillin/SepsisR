@@ -35,11 +35,9 @@ needed to calculate SOFA}
 Finds the current organ failure score using SOFA.
 }
 \examples{
-\dontrun{
-result <- find_sofa(.data = your_data, pateintid = Encounter, time = Service_Timestamp, 
+result <- find_sofa(.data = sofa_data, pateintid = Encounter, time = Service_Timestamp, 
  vitals = c("PaO2" = "Pa02", "FiO2" = "FiO2", 
  "Platelets" = "Platelets", "Bilirubin" = "Bilirubin", "GCS" = "GCS", 
  "Creatinine" = "Creatinine", "SBP" = "SBP", "DBP" = "DBP", "Vasopressor" = "Vasopressor", 
  "Vasopressor_dose" = "Vasopressor Dosage"))
-}
 }
