@@ -90,7 +90,7 @@ find_sirs <- function(.data, patientid, time, period = 1,
 #' @param vitals A character vector denoting what columns represent the vitals. It is important to 
 #' remember that right now only dopamine and dobutamine are considered in vasopressors used.Platelets should 
 #' be in 10^3/microliter and FiO2 should be listed as a percent, not a decimal.Furthermore bilirubin
-#' should be in micrograms/decilitre. 
+#' should be in micrograms/deciliter. 
 #' needed to calculate SOFA
 #' @return Returns a dataset with a new column denoting the SOFA total
 #' @examples
