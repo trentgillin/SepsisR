@@ -19,6 +19,10 @@ given to a patient}
 \item{Vasopressor_dose}{A numeric column that represents the dosage of vasopressor 
 given, needs to be in mcg/kg/min}
 }
+\value{
+Returns a dataset with a new column denoting if the cardivascular 
+component of the SOFA score was met
+}
 \description{
 Finds the current cardiac score for the SOFA score
 }

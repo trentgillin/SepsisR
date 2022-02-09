@@ -9,6 +9,8 @@
 #' given to a patient
 #' @param Vasopressor_dose A numeric column that represents the dosage of vasopressor 
 #' given, needs to be in mcg/kg/min
+#' @return Returns a dataset with a new column denoting if the cardivascular 
+#' component of the SOFA score was met
 #' @examples
 #' cardiovascular_flag = calc_card_sofa(sofa_data, SBP = SBP, DBP = DBP, Vasopressor = Vasopressor, 
 #'    Vasopressor_dose = "Vasopressor Dosage")

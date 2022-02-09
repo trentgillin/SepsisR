@@ -3,8 +3,10 @@
 #' @param event Date object to be used against admit time
 #' @param patientid A column denoting a unique patient identifier
 #' @param admission_day First day that a patient arrived at the hospital
+#' @return Returns a dataset with a new column denoting the hospital day
+#' for each date given
 #' @examples 
-#' \dontrun{
+#' \donttest{
 #' result <- find_hospital_day(blood_abx, Service_Day)
 #' }
 #' @rdname find_hospital_day

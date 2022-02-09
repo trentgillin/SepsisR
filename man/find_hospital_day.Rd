@@ -18,6 +18,10 @@ find_hospital_day(.data, event, patientid, admission_day)
 
 \item{admission_day}{First day that a patient arrived at the hospital}
 }
+\value{
+Returns a dataset with a new column denoting the hospital day
+for each date given
+}
 \description{
 Function to calculate what hospital day event occurred
 

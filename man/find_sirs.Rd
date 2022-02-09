@@ -26,6 +26,9 @@ one hour. Note: This will only fill in missing vitals.}
 \item{vitals}{A character vector denoting what columns represent the vitals needed 
 to calculate SIRS, it is important to have temperature in Celsius and WBC in mmm^3}
 }
+\value{
+Retuns a dataset with a new column denoting the SIRS total
+}
 \description{
 Finds the current organ failure score using SIRS (Systematic Inflammatory Response Syndrome)
 }

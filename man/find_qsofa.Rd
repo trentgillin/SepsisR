@@ -26,6 +26,9 @@ default is one hour. Note: This will only fill in missing vitals.}
 \item{vitals}{A character vector denoting what columns represent the vitals 
 needed to calculate qSOFA}
 }
+\value{
+Returns a dataset with a new column denoting the qSOFA total
+}
 \description{
 Finds the current qSOFA score
 }

@@ -10,7 +10,7 @@
 #' @param blood_culture_time The timestamp of your blood culture value
 #' @return Gives a dataset with a new variable consisting of the difference between two time periods
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' result <- find_bx_window(data, service_time, culture_draw_time)
 #' }
 #' @export

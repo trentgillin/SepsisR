@@ -26,7 +26,7 @@ difference variable to be called.}
 default is days.}
 }
 \value{
-Gives a dataset with a new variable consisting of the difference between 
+Gives a dataset with a new column consisting of the difference between 
 two time periods
 }
 \description{

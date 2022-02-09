@@ -31,6 +31,9 @@ be in 10^3/microliter and FiO2 should be listed as a percent, not a decimal.Furt
 should be in micrograms/decilitre. 
 needed to calculate SOFA}
 }
+\value{
+Returns a dataset with a new column denoting the SOFA total
+}
 \description{
 Finds the current organ failure score using SOFA.
 }

@@ -30,7 +30,7 @@ one hour. Note: This will only fill in missing vitals.}
 failure score.}
 }
 \value{
-Returns a data frame or tibble with a new column that denotes the desired score
+Returns a dataset with a new column that denotes the desired score
 }
 \description{
 Finds the current organ failure score.

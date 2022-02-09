@@ -11,7 +11,7 @@
 #' one hour. Note: This will only fill in missing vitals.
 #' @param vitals A character vector denoting the certain vitals necessary for each organ 
 #' failure score.
-#' @return Returns a data frame or tibble with a new column that denotes the desired score
+#' @return Returns a dataset with a new column that denotes the desired score
 #' @examples
 #' score <- assess_organ(sirs_data, method = "SIRS", patientid = Encounter, 
 #' time = Service_Timestamp, vitals = c("RR" = "RR","HR" = "HR","Temperature" = "Temperature",

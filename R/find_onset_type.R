@@ -1,6 +1,6 @@
 # Need to id those that are community versus hospital
-# for those that had blood cultures pre-admit, marked them as getting blood cultrues on day 0
-#Also if a patient had community, this overrode hospital
+# for those that had blood cultures pre-admit, marked them as getting blood cultures on day 0
+# Also if a patient had community, this overrode hospital onset
 
 
 #' Onset Type Function
@@ -10,12 +10,13 @@
 #' @param first_qad This is a Date column that represents your first qualifying antibiotic day (see CDC definition) time
 #' @param patientid A unique identifier for each patient
 #' @param admission_day A Date object for the day a patient was admitted to the hospital
+#' @return Returns a dataset with a new column that flags a patient has having 'Community' or 'Hosptial' onset
 #' @examples 
-#' \dontrun{
+#' \donttest{
 #' final_data <- data %>% find_onset(blood_day = blood_service_day, 
 #'                                   first_qad = first_qad, 
 #'                                   patientid = encounter, 
-#'                                  admission_day = admisison_date)
+#'                                  admission_day = admission_date)
 #' }
 #' @export
 

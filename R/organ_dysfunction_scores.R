@@ -10,6 +10,7 @@
 #' one hour. Note: This will only fill in missing vitals.
 #' @param vitals A character vector denoting what columns represent the vitals needed 
 #' to calculate SIRS, it is important to have temperature in Celsius and WBC in mmm^3
+#' @return Retuns a dataset with a new column denoting the SIRS total
 #' @examples
 #' dataset <- find_sirs(sirs_data, Encounter, Service_Timestamp, 
 #'    vitals = c("RR" = "RR", "Temperature" = "Temperature", "HR" = "HR", "WBC" = "Wbc"))
@@ -91,6 +92,7 @@ find_sirs <- function(.data, patientid, time, period = 1,
 #' be in 10^3/microliter and FiO2 should be listed as a percent, not a decimal.Furthermore bilirubin
 #' should be in micrograms/decilitre. 
 #' needed to calculate SOFA
+#' @return Returns a dataset with a new column denoting the SOFA total
 #' @examples
 #' result <- find_sofa(.data = sofa_data, patientid = Encounter, time = Service_Timestamp, 
 #'  vitals = c("PaO2" = "Pa02", "FiO2" = "Fi02", 
@@ -204,6 +206,7 @@ find_sofa <- function(.data, patientid, time, period = 1,
 #'  default is one hour. Note: This will only fill in missing vitals.
 #' @param vitals A character vector denoting what columns represent the vitals 
 #' needed to calculate qSOFA
+#' @return Returns a dataset with a new column denoting the qSOFA total
 #' @examples
 #' result <- find_qsofa(qsofa_data, patientid = Encounter, time = Service_Timestamp, 
 #' vitals = c("RR" = "RR", "SBP" = "SBP", "GCS" = "GCS"))

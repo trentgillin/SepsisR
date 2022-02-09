@@ -25,6 +25,9 @@ get_baseline(.data, labvalue, patientid, result_day, onset_type, blood)
 
 \item{blood}{A POSIXct indicating the blood culture time}
 }
+\value{
+Returns a dataset with a new column for the baseline of the specified lab value
+}
 \description{
 Function to get the baseline lab value
 

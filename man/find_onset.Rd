@@ -18,6 +18,9 @@ find_onset(.data, blood_day, first_qad, patientid, admission_day)
 
 \item{admission_day}{A Date object for the day a patient was admitted to the hospital}
 }
+\value{
+Returns a dataset with a new column that flags a patient has having 'Community' or 'Hosptial' onset
+}
 \description{
 Onset Type Function
 A function used to determine if a patient has community sepsis or hospital onset sepsis

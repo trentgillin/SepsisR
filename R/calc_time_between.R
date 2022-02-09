@@ -9,10 +9,10 @@
 #' difference variable to be called.
 #' @param unitx Character variable that indicates what units to return time difference, 
 #' default is days.
-#' @return Gives a dataset with a new variable consisting of the difference between 
+#' @return Gives a dataset with a new column consisting of the difference between 
 #' two time periods
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' data <- data %>% calc_time_between(culture_start, culture_end, unitx = "days")
 #' data <- calc_time_between(data, lactate_start, lactate_end, unitx = "hours")
 #' }
