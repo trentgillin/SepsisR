@@ -7,8 +7,8 @@
 #' organ failure.
 #' @param patientid A character or numeric value unique to each patient.
 #' @param time A POSIXct value that represents when a vital was taken.
-#' @param period A numeric value that indicates how long one vital is good for, default is 
-#' one hour. Note: This will only fill in missing vitals.
+#' @param period A numeric value that indicates how long to carry over a vital when next is 
+#' missing, default is one hour.
 #' @param vitals A character vector denoting the certain vitals necessary for each organ 
 #' failure score.
 #' @return Returns a dataset with a new column that denotes the desired score

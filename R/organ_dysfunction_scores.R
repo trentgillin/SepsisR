@@ -6,8 +6,8 @@
 #' white blood cell count (wbc), and temperature.
 #' @param patientid A value indicating the unique patient id, usually an encounter number.
 #' @param time A POSIXct value indicating the timestamp for when vitals where taken.
-#' @param period A numeric value that indicates how long one vital is good for, default is 
-#' one hour. Note: This will only fill in missing vitals.
+#' @param period A numeric value that indicates how long to carry over a vital when next is 
+#' missing, default is one hour.
 #' @param vitals A character vector denoting what columns represent the vitals needed 
 #' to calculate SIRS, it is important to have temperature in Celsius and WBC in mmm^3
 #' @return Retuns a dataset with a new column denoting the SIRS total
@@ -85,8 +85,8 @@ find_sirs <- function(.data, patientid, time, period = 1,
 #' systolic blood pressure (sbc), diastolic blood pressure (dbc), and platelet count columns.
 #' @param patientid A value indicating the unique patient id, usually an encounter number.
 #' @param time A POSIXct value indicating the timestamp for when vitals where taken.
-#' @param period A numeric value that indicates how long one vital is good for, default is one hour.
-#' Note: This will only fill in missing vitals.
+#' @param period A numeric value that indicates how long to carry over a vital when next is 
+#' missing, default is one hour.
 #' @param vitals A character vector denoting what columns represent the vitals. It is important to 
 #' remember that right now only dopamine and dobutamine are considered in vasopressors used.Platelets should 
 #' be in 10^3/microliter and FiO2 should be listed as a percent, not a decimal.Furthermore bilirubin
@@ -202,8 +202,8 @@ find_sofa <- function(.data, patientid, time, period = 1,
 #' and glasgow coma scale (gcs).
 #' @param patientid A value indicating the unique patient id, usually an encounter number.
 #' @param time A POSIXct value indicating the timestamp for when vitals where taken.
-#' @param period A numeric value that indicates how long one vital is good for,
-#'  default is one hour. Note: This will only fill in missing vitals.
+#' @param period A numeric value that indicates how long to carry over a vital when next is 
+#' missing, default is one hour.
 #' @param vitals A character vector denoting what columns represent the vitals 
 #' needed to calculate qSOFA
 #' @return Returns a dataset with a new column denoting the qSOFA total
