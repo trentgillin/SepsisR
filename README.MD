@@ -68,11 +68,11 @@ assess_organ(sirs_data, method = "SIRS",
 
 ## References
 
-Sequential Organ Failure Assessment (SOFA) Vincent, ()
+“Sequential Organ Failure Assessment (SOFA)” Vincent,
 <https://www.mdcalc.com/sequential-organ-failure-assessment-sofa-score>
 
-Quick Sequential Organ Failure Assessment (qSOFA) Seymour, ()
+“Quick Sequential Organ Failure Assessment (qSOFA)” Seymour,
 <https://www.mdcalc.com/qsofa-quick-sofa-score-sepsis>
 
-Systematic Inflammatory Response Syndrome (SIRS) Balk, ()
+“Systematic Inflammatory Response Syndrome (SIRS)” Balk,
 <https://www.mdcalc.com/sirs-sepsis-septic-shock-criteria>.
