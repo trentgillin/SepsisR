@@ -3,7 +3,7 @@ This is a resubmission. In this version I have:
 * I have explained acronyms
 * Added references to my description
 * Added the \value to my functions to explain their output
-* Removed \dontrun{} from functions
+* Removed \dontrun{} from examples in functions
 
 ## Test environments
 * local OS 11.15.2 install, R 4.1.1
