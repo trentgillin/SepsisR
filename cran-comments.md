@@ -13,5 +13,16 @@ This is a resubmission. In this version I have:
 ## R CMD check results
 There were no ERRORs or WARNINGs.
 
+2 Notes:
+Possibly misspelled words in DESCRIPTION:
+  Calc (10:104)
+  qSOFA (9:122, 11:53)
+
+Found the following (possibly) invalid URLs:
+  URL: https://www.cdc.gov/sepsis/what-is-sepsis.html:
+    From: DESCRIPTION
+    Status: 404
+    Message: Not Found
+
 ## Downstream dependencies
 None
